@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.example.vaadin.osgi.simplest.connectionpool.consumer">
+   <implementation class="org.lunifera.example.vaadin.osgi.simplest.connectionpool.Consumer"/>
+   <reference bind="bindConnectionPool" cardinality="1..1" interface="com.vaadin.data.util.sqlcontainer.connection.JDBCConnectionPool" name="JDBCConnectionPool" policy="dynamic" target="(pool_name=main_pool)" unbind="unbindConnectionPool"/>
+</scr:component>

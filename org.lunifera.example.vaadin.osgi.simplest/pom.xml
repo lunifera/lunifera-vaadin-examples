@@ -40,5 +40,6 @@
 		<module>org.lunifera.example.vaadin.osgi.simplest.bootstrap</module>
 		<module>org.lunifera.example.vaadin.osgi.simplest.ds.bootstrap</module>
 		<module>org.lunifera.example.vaadin.osgi.simplest.push.bootstrap</module>
+		<module>org.lunifera.example.vaadin.osgi.simplest.connectionpool</module>
 	</modules>
 </project>
