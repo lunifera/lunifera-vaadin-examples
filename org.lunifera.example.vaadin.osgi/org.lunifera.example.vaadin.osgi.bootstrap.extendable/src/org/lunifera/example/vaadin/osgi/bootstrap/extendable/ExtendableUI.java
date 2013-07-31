@@ -1,4 +1,4 @@
- /**
+/**
  * Copyright 2013 Lunifera GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,8 +52,13 @@ public class ExtendableUI extends UI implements
 	@Override
 	public IContentProvider addingService(
 			ServiceReference<IContentProvider> reference) {
-		IContentProvider provider = context.getService(reference);
-		setContent(provider.getContent());
+		final IContentProvider provider = context.getService(reference);
+		access(new Runnable() {
+			@Override
+			public void run() {
+				setContent(provider.getContent());
+			}
+		});
 		return provider;
 	}
 
@@ -69,7 +74,12 @@ public class ExtendableUI extends UI implements
 	public void removedService(ServiceReference<IContentProvider> reference,
 			IContentProvider service) {
 		if (getContent() == service.getContent()) {
-			setContent(null);
+			access(new Runnable() {
+				@Override
+				public void run() {
+					setContent(null);
+				}
+			});
 		}
 	}
 
