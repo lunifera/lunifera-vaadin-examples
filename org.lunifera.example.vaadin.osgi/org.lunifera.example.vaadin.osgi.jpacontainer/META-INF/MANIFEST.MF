@@ -4,8 +4,7 @@ Bundle-Name: Jpacontainer
 Bundle-SymbolicName: org.lunifera.example.vaadin.osgi.jpacontainer
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Bundle-ClassPath: .,
- lib/vaadin-jpacontainer-3.0.0.jar
+Bundle-ClassPath: .
 Import-Package: javax.persistence;jpa="2.1";version="2.1.0",
  javax.persistence.criteria;jpa="2.1";version="2.1.0",
  javax.persistence.metamodel;jpa="2.1";version="2.1.0",
@@ -18,7 +17,8 @@ Import-Package: javax.persistence;jpa="2.1";version="2.1.0",
  org.osgi.util.tracker
 Require-Bundle: com.vaadin.server;bundle-version="7.1.1",
  com.vaadin.shared;bundle-version="7.1.1",
- com.vaadin.shared.deps;bundle-version="1.0.2"
+ com.vaadin.shared.deps;bundle-version="1.0.2",
+ org.lunifera.dependencies.bundle.vaadin.addon.jpacontainer;bundle-version="3.0.0"
 Meta-Persistence: META-INF/persistence.xml
 Service-Component: OSGI-INF/containerService.xml,
  OSGI-INF/contentProvider.xml
