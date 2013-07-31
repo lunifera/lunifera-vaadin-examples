@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Bootstrap
+Bundle-SymbolicName: org.lunifera.example.vaadin.osgi.bootstrap.simple
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: org.lunifera.example.vaadin.osgi.bootstrap.simple.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: javax.servlet;version="2.6.0",
+ javax.servlet.http;version="2.6.0",
+ org.json,
+ org.osgi.framework;version="1.7.0",
+ org.osgi.service.http;version="1.2.1",
+ org.osgi.service.wireadmin;version="1.0.1",
+ org.osgi.util.tracker;version="1.5.1"
+Require-Bundle: com.vaadin.shared;bundle-version="7.1.1",
+ com.vaadin.server;bundle-version="7.1.1"

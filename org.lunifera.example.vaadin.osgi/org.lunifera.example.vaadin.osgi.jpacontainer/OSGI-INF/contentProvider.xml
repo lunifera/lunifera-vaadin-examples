@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.example.vaadin.osgi.jpacontainer.contentprovider">
+   <implementation class="org.lunifera.example.vaadin.osgi.jpacontainer.ContentProvider"/>
+   <service>
+      <provide interface="org.lunifera.example.vaadin.osgi.bootstrap.extendable.api.IContentProvider"/>
+   </service>
+</scr:component>

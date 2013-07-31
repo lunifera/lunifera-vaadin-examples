@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.example.vaadin.osgi.simplest.ds.bootstrap">
-   <implementation class="org.lunifera.example.vaadin.osgi.simplest.ds.bootstrap.ServiceComponent"/>
-   <reference bind="bindHttpService" cardinality="0..1" interface="org.osgi.service.http.HttpService" name="HttpService" policy="dynamic" unbind="unbindHttpService"/>
-</scr:component>
