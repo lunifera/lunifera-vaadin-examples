@@ -8,7 +8,7 @@ Bundle-ClassPath: .
 Import-Package: javax.persistence;jpa="2.1";version="2.1.0",
  javax.persistence.criteria;jpa="2.1";version="2.1.0",
  javax.persistence.metamodel;jpa="2.1";version="2.1.0",
- javax.persistence.spi;version="2.1.0",
+ javax.persistence.spi;jpa="2.1";version="2.1.0",
  javax.validation.constraints;version="1.0.0.GA",
  org.lunifera.example.vaadin.osgi.beanvalidation,
  org.lunifera.example.vaadin.osgi.bootstrap.extendable.api,
