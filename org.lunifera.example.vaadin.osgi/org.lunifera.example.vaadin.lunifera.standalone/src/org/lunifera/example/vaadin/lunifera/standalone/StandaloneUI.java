@@ -13,24 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lunifera.example.vaadin.osgi.contentprovider;
+package org.lunifera.example.vaadin.lunifera.standalone;
 
-import org.lunifera.example.vaadin.osgi.bootstrap.extendable.api.IContentProvider;
+import org.lunifera.runtime.web.vaadin.osgi.common.OSGiUI;
 
-import com.vaadin.ui.Component;
+import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Label;
 
-public class ContentProvider implements IContentProvider {
-
-	private Label label;
+@SuppressWarnings("serial")
+public class StandaloneUI extends OSGiUI {
 
 	@Override
-	public Component getContent() {
-		if (label == null) {
-			label = new Label("Thats the provided content");
-			label.setId("label_1");
-		}
-		return label;
+	protected void init(VaadinRequest request) {
+		setContent(new Label(
+				"Yep, thats the Standalone UI provided by lunifera OSGi bridge."));
 	}
 
 }

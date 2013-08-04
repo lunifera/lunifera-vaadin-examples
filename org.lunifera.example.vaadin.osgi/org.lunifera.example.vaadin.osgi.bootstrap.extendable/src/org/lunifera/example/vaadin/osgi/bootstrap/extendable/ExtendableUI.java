@@ -25,6 +25,8 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.Reindeer;
 
@@ -37,9 +39,14 @@ public class ExtendableUI extends UI implements
 	private ServiceTracker<IContentProvider, IContentProvider> tracker;
 	private BundleContext context = FrameworkUtil.getBundle(getClass())
 			.getBundleContext();
+	private CssLayout main;
 
 	@Override
 	protected void init(VaadinRequest request) {
+		main = new CssLayout();
+		main.setSizeFull();
+		setContent(main);
+
 		// start a service tracker to find all content provider
 		tracker = new ServiceTracker<IContentProvider, IContentProvider>(
 				context, IContentProvider.class, this);
@@ -53,10 +60,12 @@ public class ExtendableUI extends UI implements
 	public IContentProvider addingService(
 			ServiceReference<IContentProvider> reference) {
 		final IContentProvider provider = context.getService(reference);
-		access(new Runnable() {
+		accessSynchronously(new Runnable() {
 			@Override
 			public void run() {
-				setContent(provider.getContent());
+				Component c = provider.getContent();
+				c.setSizeFull();
+				main.addComponent(c);
 			}
 		});
 		return provider;
@@ -73,11 +82,11 @@ public class ExtendableUI extends UI implements
 	@Override
 	public void removedService(ServiceReference<IContentProvider> reference,
 			IContentProvider service) {
-		if (getContent() == service.getContent()) {
-			access(new Runnable() {
+		if (main.getComponent(0) == service.getContent()) {
+			accessSynchronously(new Runnable() {
 				@Override
 				public void run() {
-					setContent(null);
+					main.removeAllComponents();
 				}
 			});
 		}

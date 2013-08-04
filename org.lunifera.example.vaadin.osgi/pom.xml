@@ -46,5 +46,9 @@
 		<module>org.lunifera.example.vaadin.osgi.jpacontainer</module>
 		<module>org.lunifera.example.vaadin.osgi.connectionpool</module>
 		<module>org.lunifera.example.vaadin.osgi.contentprovider</module>
+		<module>org.lunifera.example.vaadin.lunifera.standalone</module>
+		<module>org.lunifera.example.vaadin.lunifera.uiprovider</module>
+		<module>org.lunifera.example.vaadin.osgi.testpart</module>
+		<module>org.lunifera.example.vaadin.osgi.testpart.tests</module>
 	</modules>
 </project>

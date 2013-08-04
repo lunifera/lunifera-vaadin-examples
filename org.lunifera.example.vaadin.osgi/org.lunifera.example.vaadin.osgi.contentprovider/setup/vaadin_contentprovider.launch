@@ -22,5 +22,5 @@
 <booleanAttribute key="tracing" value="false"/>
 <booleanAttribute key="useCustomFeatures" value="false"/>
 <booleanAttribute key="useDefaultConfigArea" value="true"/>
-<stringAttribute key="workspace_bundles" value="org.lunifera.example.vaadin.osgi.bootstrap.extendable@default:default,org.lunifera.example.vaadin.osgi.contentprovider*0.0.1.qualifier@default:default"/>
+<stringAttribute key="workspace_bundles" value="com.vaadin.server@default:default,com.vaadin.shared.deps@default:default,com.vaadin.shared@default:default,org.lunifera.example.vaadin.osgi.bootstrap.extendable@default:default,org.lunifera.example.vaadin.osgi.contentprovider@default:default"/>
 </launchConfiguration>

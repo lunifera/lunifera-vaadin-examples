@@ -1,0 +1,4 @@
+Point browser to http://localhost:8082/standalone
+
+Detail infos about the implementation follow:
+http://lun.lunifera.org/docu/contents/05-Vaadin-Application.html#VaadinApplication

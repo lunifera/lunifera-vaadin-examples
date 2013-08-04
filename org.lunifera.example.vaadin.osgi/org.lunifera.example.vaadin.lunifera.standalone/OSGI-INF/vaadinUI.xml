@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" factory="org.lunifera.web.vaadin.UI/org.lunifera.example.vaadin.lunifera.standalone.StandaloneUI" immediate="false" name="org.lunifera.example.vaadin.lunifera.standalone.ui">
+   <implementation class="org.lunifera.example.vaadin.lunifera.standalone.StandaloneUI"/>
+</scr:component>

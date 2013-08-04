@@ -1,0 +1,2 @@
+To use this bundle, please use the configuration for org.lunifera.example.vaadin.lunifera.standalone and just add
+this bundle to the launch configuration.

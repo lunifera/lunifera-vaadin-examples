@@ -1,0 +1,1 @@
+This bundle is used by org.lunifera.example.vaadin.osgi.jpacontainer.

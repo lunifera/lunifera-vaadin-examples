@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Standalone with lunifera OSGi bridge
+Bundle-SymbolicName: org.lunifera.example.vaadin.lunifera.standalone
+Bundle-Version: 0.0.1.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: javax.servlet;version="2.6.0",
+ javax.servlet.http;version="2.6.0",
+ org.json,
+ org.lunifera.runtime.common.dispose,
+ org.lunifera.runtime.web.vaadin.osgi.common,
+ org.osgi.framework;version="1.7.0",
+ org.osgi.service.component;version="1.2.0"
+Require-Bundle: com.vaadin.shared;bundle-version="7.1.1",
+ com.vaadin.server;bundle-version="7.1.1"
+Service-Component: OSGI-INF/*.xml
+Bundle-Vendor: lunifera.org
+Lunifera-Config: config
