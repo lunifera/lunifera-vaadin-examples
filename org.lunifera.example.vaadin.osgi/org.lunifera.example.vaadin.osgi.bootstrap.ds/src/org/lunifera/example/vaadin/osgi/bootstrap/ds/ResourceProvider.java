@@ -34,7 +34,6 @@ public class ResourceProvider implements HttpContext {
 
 	private List<Bundle> resources = new ArrayList<Bundle>();
 
-
 	@Override
 	public URL getResource(String uri) {
 		URL resource = null;

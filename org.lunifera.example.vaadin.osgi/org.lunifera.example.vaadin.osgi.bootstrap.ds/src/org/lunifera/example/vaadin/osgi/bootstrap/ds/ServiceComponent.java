@@ -25,9 +25,8 @@ import org.osgi.service.http.HttpService;
 import org.osgi.service.http.NamespaceException;
 
 /**
- * Activator is used by OSGi framework to notify about the start and stop of the
- * bundle. The activator will look for the HttpService and registers the vaadin
- * servlet at it.
+ * The service will look for the HttpService and registers the vaadin servlet at
+ * it.
  */
 public class ServiceComponent implements BundleListener {
 
@@ -43,6 +42,16 @@ public class ServiceComponent implements BundleListener {
 		handleStartedBundles(context);
 		context.getBundleContext().addBundleListener(this);
 	}
+	
+	/**
+	 * Called by OSGi DS if the component is deactivated.
+	 * 
+	 * @param context
+	 */
+	protected void deactivate(ComponentContext context) {
+		context.getBundleContext().removeBundleListener(this);
+		resourceProvider = null;
+	}
 
 	/**
 	 * Returns the resource provider to access static resources.
@@ -54,16 +63,6 @@ public class ServiceComponent implements BundleListener {
 			resourceProvider = new ResourceProvider();
 		}
 		return resourceProvider;
-	}
-
-	/**
-	 * Called by OSGi DS if the component is deactivated.
-	 * 
-	 * @param context
-	 */
-	protected void deactivate(ComponentContext context) {
-		context.getBundleContext().removeBundleListener(this);
-		resourceProvider = null;
 	}
 
 	/**

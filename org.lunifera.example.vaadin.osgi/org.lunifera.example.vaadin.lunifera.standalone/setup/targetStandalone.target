@@ -7,13 +7,13 @@
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.lunifera.dependencies.feature.security.shiro.feature.group" version="1.2.1"/>
-<unit id="org.lunifera.runtime.feature.configuration.manager.source.feature.group" version="0.0.1.201307310929"/>
-<unit id="org.lunifera.runtime.web.feature.vaadin.addon.osgi.feature.group" version="0.0.1.201308041353"/>
-<unit id="org.lunifera.dependencies.feature.vaadin.feature.group" version="7.1.0.201307310927"/>
-<unit id="org.lunifera.runtime.feature.configuration.manager.feature.group" version="0.0.1.201307310929"/>
-<unit id="org.lunifera.runtime.web.feature.vaadin.addon.osgi.source.feature.group" version="0.0.1.201308041353"/>
-<unit id="org.lunifera.dependencies.feature.equinox.source.feature.group" version="3.9.0.201307310927"/>
-<unit id="org.lunifera.dependencies.feature.equinox.feature.group" version="3.9.0.201307310927"/>
+<unit id="org.lunifera.runtime.feature.configuration.manager.source.feature.group" version="0.0.1.201308070007"/>
+<unit id="org.lunifera.runtime.web.feature.vaadin.addon.osgi.feature.group" version="0.0.1.201308111236"/>
+<unit id="org.lunifera.dependencies.feature.vaadin.feature.group" version="7.1.0.201308070004"/>
+<unit id="org.lunifera.runtime.feature.configuration.manager.feature.group" version="0.0.1.201308070007"/>
+<unit id="org.lunifera.runtime.web.feature.vaadin.addon.osgi.source.feature.group" version="0.0.1.201308111236"/>
+<unit id="org.lunifera.dependencies.feature.equinox.source.feature.group" version="3.9.0.201308070004"/>
+<unit id="org.lunifera.dependencies.feature.equinox.feature.group" version="3.9.0.201308070004"/>
 <repository location="http://lun.lunifera.org/downloads/p2/lunifera/kepler/latest/"/>
 </location>
 </locations>

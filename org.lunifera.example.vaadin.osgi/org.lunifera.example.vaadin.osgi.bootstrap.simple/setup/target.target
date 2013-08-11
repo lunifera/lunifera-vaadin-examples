@@ -2,9 +2,9 @@
 <?pde version="3.8"?><target name="target" sequenceNumber="1">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.lunifera.dependencies.feature.equinox.feature.group" version="3.9.0.201307112203"/>
-<unit id="org.lunifera.dependencies.feature.equinox.source.feature.group" version="3.9.0.201307112203"/>
-<unit id="org.lunifera.dependencies.feature.vaadin.feature.group" version="7.1.0.201307112203"/>
+<unit id="org.lunifera.dependencies.feature.equinox.feature.group" version="3.9.0.201307310927"/>
+<unit id="org.lunifera.dependencies.feature.equinox.source.feature.group" version="3.9.0.201307310927"/>
+<unit id="org.lunifera.dependencies.feature.vaadin.feature.group" version="7.1.0.201307310927"/>
 <repository location="http://lun.lunifera.org/downloads/p2/lunifera/kepler/latest/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">

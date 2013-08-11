@@ -124,5 +124,4 @@ public class ServiceComponent implements BundleListener {
 			}
 		}
 	}
-
 }
