@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="target" sequenceNumber="18">
+<?pde version="3.8"?><target name="target" sequenceNumber="23">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.gemini.dbaccess.feature.feature.group" version="1.1.0.RELEASE"/>
 <repository location="http://download.eclipse.org/gemini/updates/dbaccess/1.1.0"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.persistence.sdk.feature.group" version="2.5.0.v20130507-3faac2b"/>
-<unit id="org.eclipse.equinox.server.jetty.feature.group" version="1.1.0.v20130429-1600"/>
-<repository location="http://download.eclipse.org/releases/kepler"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.gemini.jpa.feature.feature.group" version="1.2.0.M1"/>
@@ -16,17 +11,32 @@
 <repository location="http://download.eclipse.org/gemini/jpa/updates"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.apache.bval" version="0.3.0.v201205161050"/>
-<unit id="javax.validation" version="1.0.0.GA_v201205091237"/>
-<unit id="javax.validation.source" version="1.0.0.GA_v201205091237"/>
-<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/I20130724151342/repository/"/>
+<unit id="org.lunifera.dependencies.feature.vaadin.addon.jpacontainer.feature.group" version="3.0.0"/>
+<unit id="org.lunifera.dependencies.feature.security.shiro.feature.group" version="1.2.2"/>
+<unit id="org.lunifera.dependencies.feature.vaadin.feature.group" version="7.1.9"/>
+<unit id="org.lunifera.dependencies.feature.jetty.feature.group" version="8.1.11"/>
+<unit id="org.lunifera.dependencies.feature.atmosphere.feature.group" version="1.0.18.201401251444"/>
+<unit id="org.lunifera.dependencies.feature.logback.feature.group" version="1.0.13"/>
+<repository location="http://lun.lunifera.org/downloads/p2/lunifera/kepler/latest/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.lunifera.dependencies.feature.vaadin.feature.group" version="7.1.0.201307310927"/>
-<unit id="org.lunifera.dependencies.feature.vaadin.addon.jpacontainer.feature.group" version="3.0.0"/>
-<unit id="org.lunifera.dependencies.feature.equinox.source.feature.group" version="3.9.0.201307310927"/>
-<unit id="org.lunifera.dependencies.feature.equinox.feature.group" version="3.9.0.201307310927"/>
-<repository location="http://lun.lunifera.org/downloads/p2/lunifera/kepler/latest/"/>
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.9.0.v20130828-0031"/>
+<repository location="http://download.eclipse.org/releases/kepler"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.apache.commons.beanutils.source" version="1.8.0.v201205091237"/>
+<unit id="javax.validation" version="1.0.0.GA_v201205091237"/>
+<unit id="org.apache.commons.beanutils" version="1.8.0.v201205091237"/>
+<unit id="javax.validation.source" version="1.0.0.GA_v201205091237"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20130724151342/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.apache.commons.collections.source" version="3.2.0.v2013030210310"/>
+<unit id="org.apache.commons.logging.source" version="1.1.1.v201101211721"/>
+<unit id="org.apache.bval" version="0.3.0.v201205161050"/>
+<unit id="org.apache.commons.collections" version="3.2.0.v2013030210310"/>
+<unit id="org.apache.commons.logging" version="1.1.1.v201101211721"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository/"/>
 </location>
 </locations>
 </target>

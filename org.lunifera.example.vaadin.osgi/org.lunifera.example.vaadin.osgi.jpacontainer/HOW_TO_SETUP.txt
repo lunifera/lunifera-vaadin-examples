@@ -1,2 +1,0 @@
-Since JPAContainer is not an OSGi bundle, please download the JPAContainer and copy it to the lib folder.
-The open META-INF/MANIFEST.MF -> Tab Runtime -> Group ClassPath and ensure, that the jar file is added to classpath.
