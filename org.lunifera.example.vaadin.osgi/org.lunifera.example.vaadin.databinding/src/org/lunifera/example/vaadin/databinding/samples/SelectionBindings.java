@@ -30,6 +30,7 @@ public class SelectionBindings extends CssLayout {
 	private TextField text1;
 	private TextField text2;
 	private TextField text3;
+	private ListSelect list3;
 
 	public SelectionBindings() {
 		setSizeFull();
@@ -54,13 +55,15 @@ public class SelectionBindings extends CssLayout {
 		layout.addComponent(enabled, "top:25px;left:900px");
 
 		// lists
-		list1 = new ListSelect();
+		list1 = new ListSelect("Synchronized multi selection");
 		list1.setMultiSelect(true);
+		list1.setWidth("200px");
 		list1.setValue(new ArrayList<>());
 		list1.setPropertyDataSource(new ObjectProperty<Set>(new HashSet<>(),
 				Set.class));
 		list1.setImmediate(true);
 		list2 = new ListSelect();
+		list2.setWidth("200px");
 		list2.setMultiSelect(true);
 		list2.setPropertyDataSource(new ObjectProperty<Set>(new HashSet<>(),
 				Set.class));
@@ -95,14 +98,14 @@ public class SelectionBindings extends CssLayout {
 		ds1.addItem("Row 7");
 
 		// table
-		table = new Table();
+		table = new Table("Master-Detail binding");
 		table.setImmediate(true);
-		table.setHeight("300px");
+		table.setHeight("200px");
 		table.setSelectable(true);
 		table.setWidth("400px");
 		table.setPageLength(7);
 		table.setPropertyDataSource(new ObjectProperty<Bar>(null, Bar.class));
-		layout.addComponent(table, "top:300px;left:50px");
+		layout.addComponent(table, "top:250px;left:50px");
 
 		BeanItemContainer<Bar> ds2 = new BeanItemContainer<>(Bar.class);
 		ds2.addBean(new Bar("Joe", 1234, new Foo("Jackman")));
@@ -132,9 +135,9 @@ public class SelectionBindings extends CssLayout {
 		text3.setPropertyDataSource(new ObjectProperty<String>(null,
 				String.class));
 
-		layout.addComponent(text1, "top:300px;left:800px");
-		layout.addComponent(text2, "top:350px;left:800px");
-		layout.addComponent(text3, "top:400px;left:800px");
+		layout.addComponent(text1, "top:250px;left:500px");
+		layout.addComponent(text2, "top:300px;left:500px");
+		layout.addComponent(text3, "top:350px;left:500px");
 
 		// bind the selection of list1 to list2 and vise verse
 		dbc.bindValue(VaadinObservables.observeSingleSelectionDetailValue(
@@ -153,6 +156,21 @@ public class SelectionBindings extends CssLayout {
 		dbc.bindValue(VaadinObservables.observeEnabled(table),
 				VaadinObservables.observeValue(enabled));
 
+		// lists
+		list3 = new ListSelect("List options bound to list caption");
+		list3.setWidth("200px");
+		list3.setPropertyDataSource(new ObjectProperty<String>("", String.class));
+		list3.setImmediate(true);
+
+		layout.addComponent(list3, "top:500px;left:50px");
+		Container ds3 = list3.getContainerDataSource();
+		ds3.addItem("The caption of this list");
+		ds3.addItem("follows the selection");
+		ds3.addItem("in this box here ...");
+
+		dbc.bindValue(
+				VaadinObservables.observeSingleSelection(list3, String.class),
+				VaadinObservables.observeCaption(list3));
 	}
 
 	// protected static class ValueBean()

@@ -16,4 +16,6 @@ Import-Package: javax.servlet;version="2.6.0",
 Require-Bundle: com.vaadin.shared;bundle-version="7.1.1",
  com.vaadin.server;bundle-version="7.1.1",
  org.lunifera.runtime.web.vaadin.databinding;bundle-version="0.0.1",
- org.lunifera.runtime.web.vaadin.components;bundle-version="0.0.1"
+ org.lunifera.runtime.web.vaadin.components;bundle-version="0.0.1",
+ org.eclipse.emf.ecp.ecview.extension.model,
+ org.lunifera.runtime.web.ecview.presentation.vaadin
