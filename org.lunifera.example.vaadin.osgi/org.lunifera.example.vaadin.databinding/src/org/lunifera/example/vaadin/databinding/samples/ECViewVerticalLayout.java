@@ -25,7 +25,6 @@ public class ECViewVerticalLayout extends CssLayout {
 	private CssLayout rootLayout = new CssLayout();
 
 	private AbsoluteLayout layout;
-	private DataBindingContext dbc;
 	public ECViewVerticalLayout() throws ContextException {
 		setSizeFull();
 		init();
@@ -33,28 +32,28 @@ public class ECViewVerticalLayout extends CssLayout {
 
 	public void init() throws ContextException {
 
-		dbc = new DataBindingContext();
-
 		layout = new AbsoluteLayout();
 		layout.setSizeFull();
 		addComponent(layout);
 
 		YView yView = factory.createView();
 		YVerticalLayout yLayout = factory.createVerticalLayout();
-		yLayout.setSpacing(true);
-		yLayout.setMargin(true);
 		yLayout.setFillVertical(false);
 		yView.setContent(yLayout);
 		
-		YTextField yText1 = factory.createTextField();
-		YTextField yText2 = factory.createTextField();
-		YTextField yText3 = factory.createTextField();
-		YTextField yText4 = factory.createTextField();
+		YTextField yTextfield1 = factory.createTextField();
+		yTextfield1.setLabel("Item");
+		YTextField yTextfield2 = factory.createTextField();
+		yTextfield2.setLabel("Group");
+		YTextField yTextfield3 = factory.createTextField();
+		yTextfield3.setLabel("Serial Nr.");
+		YTextField yTextfield4 = factory.createTextField();
+		yTextfield4.setLabel("Owner");
 
-		yLayout.getElements().add(yText1);
-		yLayout.getElements().add(yText2);
-		yLayout.getElements().add(yText3);
-		yLayout.getElements().add(yText4);
+		yLayout.getElements().add(yTextfield1);
+		yLayout.getElements().add(yTextfield2);
+		yLayout.getElements().add(yTextfield3);
+		yLayout.getElements().add(yTextfield4);
 
 		VaadinRenderer renderer = new VaadinRenderer();
 		renderer.render(layout, yView, null);

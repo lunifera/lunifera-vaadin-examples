@@ -1,0 +1,225 @@
+package org.lunifera.example.vaadin.databinding.samples;
+
+import java.util.Arrays;
+import java.util.Date;
+
+import org.eclipse.emf.ecp.ecview.common.context.ContextException;
+import org.eclipse.emf.ecp.ecview.common.model.binding.YBindingSet;
+import org.eclipse.emf.ecp.ecview.common.model.core.CoreModelFactory;
+import org.eclipse.emf.ecp.ecview.common.model.core.YBeanSlot;
+import org.eclipse.emf.ecp.ecview.common.model.core.YBeanSlotBindingEndpoint;
+import org.eclipse.emf.ecp.ecview.common.model.core.YView;
+import org.eclipse.emf.ecp.ecview.extension.model.extension.YDateTime;
+import org.eclipse.emf.ecp.ecview.extension.model.extension.YHorizontalLayout;
+import org.eclipse.emf.ecp.ecview.extension.model.extension.YList;
+import org.eclipse.emf.ecp.ecview.extension.model.extension.YNumericField;
+import org.eclipse.emf.ecp.ecview.extension.model.extension.YSelectionType;
+import org.eclipse.emf.ecp.ecview.extension.model.extension.YTable;
+import org.eclipse.emf.ecp.ecview.extension.model.extension.YTextField;
+import org.eclipse.emf.ecp.ecview.extension.model.extension.YVerticalLayout;
+import org.eclipse.emf.ecp.ecview.extension.model.extension.util.SimpleExtensionModelFactory;
+import org.lunifera.runtime.web.ecview.presentation.vaadin.VaadinRenderer;
+
+import com.vaadin.ui.AbsoluteLayout;
+import com.vaadin.ui.CssLayout;
+
+public class ECViewDatabinding extends CssLayout {
+
+	private SimpleExtensionModelFactory factory = new SimpleExtensionModelFactory();
+	private CssLayout rootLayout = new CssLayout();
+
+	private AbsoluteLayout layout;
+
+	public ECViewDatabinding() throws ContextException {
+		setSizeFull();
+		init();
+	}
+
+	public void init() throws ContextException {
+
+		// create layout
+		layout = new AbsoluteLayout();
+		layout.setSizeFull();
+		addComponent(layout);
+
+		YView yView = factory.createView();
+		YHorizontalLayout yLayout = factory.createHorizontalLayout();
+		yView.setContent(yLayout);
+
+		// create bindingset
+
+		YBindingSet yBindingSet = yView.getOrCreateBindingSet();
+
+		// Textfields
+
+		YVerticalLayout yLayoutAB = factory.createVerticalLayout();
+		yLayoutAB.setFillVertical(false);
+		yLayout.addElement(yLayoutAB);
+
+		YTextField yTextfield1 = factory.createTextField();
+		yTextfield1.setLabel("A (binds to B):");
+		YTextField yTextfield2 = factory.createTextField();
+		yTextfield2.setLabel("B (binds to A):");
+		yLayoutAB.getElements().add(yTextfield1);
+		yLayoutAB.getElements().add(yTextfield2);
+
+		// textField1 <--> textField2
+		yBindingSet.addBinding(yTextfield1.createValueEndpoint(),
+				yTextfield2.createValueEndpoint());
+
+		// Datefields
+
+		YVerticalLayout yLayoutCD = factory.createVerticalLayout();
+		yLayoutCD.setFillVertical(false);
+		yLayout.addElement(yLayoutCD);
+
+		YDateTime yDatefield1 = factory.createDateTime();
+		yDatefield1.setLabel("C (binds to D):");
+		YDateTime yDatefield2 = factory.createDateTime();
+		yDatefield2.setLabel("D (binds to C):");
+		yLayoutCD.getElements().add(yDatefield1);
+		yLayoutCD.getElements().add(yDatefield2);
+
+		// dateField1 <--> dateField2
+		yBindingSet.addBinding(yDatefield1.createValueEndpoint(),
+				yDatefield2.createValueEndpoint());
+
+		// Lists
+		YVerticalLayout yLayoutEF = factory.createVerticalLayout();
+		yLayoutEF.setFillVertical(false);
+		yLayout.addElement(yLayoutEF);
+
+		// list 1
+		YList yList1 = factory.createList();
+		yList1.setType(String.class);
+		yList1.setSelectionType(YSelectionType.MULTI);
+		yList1.setLabel("E (binds to F):");
+		// list 2
+		YList yList2 = factory.createList();
+		yList2.setType(String.class);
+		yList2.setSelectionType(YSelectionType.MULTI);
+		yList2.setLabel("F (binds to E):");
+
+		// add lists to layout
+		yLayoutEF.getElements().add(yList1);
+		yLayoutEF.getElements().add(yList2);
+
+		// register the bindings
+		yBindingSet.addBinding(yList1.createCollectionEndpoint(),
+				yList2.createCollectionEndpoint());
+		yBindingSet.addBinding(yList1.createMultiSelectionEndpoint(),
+				yList2.createMultiSelectionEndpoint());
+
+		// Master-Detail-Binding
+		YVerticalLayout yLayoutGH = factory.createVerticalLayout();
+		yLayoutGH.setFillVertical(false);
+		yLayout.addElement(yLayoutGH);
+
+		YTable yTable = factory.createTable();
+		yTable.setType(TablePojo.class);
+		yTable.setSelectionType(YSelectionType.SINGLE);
+		yLayoutGH.addElement(yTable);
+
+		YTextField yTextfield3 = factory.createTextField();
+		yTextfield3.setLabel("Name:");
+		YNumericField yNumericField = factory.createNumericField();
+		yNumericField.setLabel("Age:");
+		YDateTime yDateTime = factory.createDateTime();
+		yDateTime.setLabel("Birthdate:");
+		yLayoutGH.addElement(yTextfield3);
+		yLayoutGH.addElement(yNumericField);
+		yLayoutGH.addElement(yDateTime);
+
+		// register the bindings
+
+		// RENDER !!
+		VaadinRenderer renderer = new VaadinRenderer();
+		renderer.render(layout, yView, null);
+
+		// create a beanslot that keeps the selected bean from the table
+		YBeanSlot ySelectionSlot = CoreModelFactory.eINSTANCE.createYBeanSlot();
+		ySelectionSlot.setName("table-selection");
+		ySelectionSlot.setValueType(TablePojo.class);
+		yView.getBeanSlots().add(ySelectionSlot);
+
+		// Bind table selection to beanslot
+		YBeanSlotBindingEndpoint ySelectionSlotEndpoint = CoreModelFactory.eINSTANCE
+				.createYBeanSlotBindingEndpoint();
+		ySelectionSlotEndpoint.setBeanSlot(ySelectionSlot);
+		ySelectionSlotEndpoint.setAttributePath("value");
+		yBindingSet.addBinding(ySelectionSlotEndpoint,
+				yTable.createSelectionEndpoint());
+
+		// Bind bean slot to nameTextField
+		YBeanSlotBindingEndpoint ySelection_NameEndpoint = CoreModelFactory.eINSTANCE
+				.createYBeanSlotBindingEndpoint();
+		ySelection_NameEndpoint.setBeanSlot(ySelectionSlot);
+		ySelection_NameEndpoint.setAttributePath("value.name");
+		yBindingSet.addBinding(yTextfield3.createValueEndpoint(),
+				ySelection_NameEndpoint);
+
+		// Bind bean slot to ageTextField
+		YBeanSlotBindingEndpoint ySelection_AgeEndpoint = CoreModelFactory.eINSTANCE
+				.createYBeanSlotBindingEndpoint();
+		ySelection_AgeEndpoint.setBeanSlot(ySelectionSlot);
+		ySelection_AgeEndpoint.setAttributePath("value.age");
+		yBindingSet.addBinding(yNumericField.createValueEndpoint(),
+				ySelection_AgeEndpoint);
+
+		// Bind bean slot to dateField
+		YBeanSlotBindingEndpoint ySelection_DateEndpoint = CoreModelFactory.eINSTANCE
+				.createYBeanSlotBindingEndpoint();
+		ySelection_DateEndpoint.setBeanSlot(ySelectionSlot);
+		ySelection_DateEndpoint.setAttributePath("value.birthdate");
+		yBindingSet.addBinding(yDateTime.createValueEndpoint(),
+				ySelection_DateEndpoint);
+
+		// set the values of the list and table
+		yList2.getCollection().addAll(
+				Arrays.asList("Row no 1", "Row no 2", "Row no 3"));
+		yTable.getCollection().addAll(
+				Arrays.asList(new TablePojo("Anton", 35, new Date(78, 10, 14)),
+						new TablePojo("Bert", 35, new Date(78, 12, 24)),
+						new TablePojo("Charlie", 15, new Date(99, 5, 11))));
+	}
+
+	public static class TablePojo {
+
+		private String name;
+		private int age;
+		private Date birthdate;
+
+		public TablePojo(String name, int age, Date birthdate) {
+			super();
+			this.name = name;
+			this.age = age;
+			this.birthdate = birthdate;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public int getAge() {
+			return age;
+		}
+
+		public void setAge(int age) {
+			this.age = age;
+		}
+
+		public Date getBirthdate() {
+			return birthdate;
+		}
+
+		public void setBirthdate(Date birthdate) {
+			this.birthdate = birthdate;
+		}
+
+	}
+
+}
