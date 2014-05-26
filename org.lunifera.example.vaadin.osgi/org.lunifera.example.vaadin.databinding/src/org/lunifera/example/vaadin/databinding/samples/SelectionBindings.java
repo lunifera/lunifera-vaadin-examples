@@ -25,6 +25,10 @@ import com.vaadin.ui.ListSelect;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
 
+/**
+ * Demonstrates selection bindings between lists and tables using Vaadin and
+ * Vaadin observables.
+ */
 public class SelectionBindings extends CssLayout {
 
 	private AbsoluteLayout layout;
@@ -47,63 +51,40 @@ public class SelectionBindings extends CssLayout {
 	@SuppressWarnings("rawtypes")
 	public void init() {
 
-		dbc = new DataBindingContext();
-
+		// Vaadin basis
 		layout = new AbsoluteLayout();
 		layout.setSizeFull();
 		addComponent(layout);
 
-		readonly = new CheckBox("Readonly");
-		readonly.setImmediate(true);
-		enabled = new CheckBox("Enabled");
-		enabled.setValue(true);
-		enabled.setImmediate(true);
-		layout.addComponent(readonly, "top:25px;left:800px");
-		layout.addComponent(enabled, "top:25px;left:900px");
+		// binding context
+		dbc = new DataBindingContext();
 
-		// lists
-		list1 = new ListSelect("Synchronized multi selection");
-		list1.setMultiSelect(true);
-		list1.setWidth("200px");
-		list1.setValue(new ArrayList<>());
-		list1.setPropertyDataSource(new ObjectProperty<Set>(new HashSet<>(),
-				Set.class));
-		list1.setImmediate(true);
-		list2 = new ListSelect();
-		list2.setWidth("200px");
-		list2.setMultiSelect(true);
-		list2.setPropertyDataSource(new ObjectProperty<Set>(new HashSet<>(),
-				Set.class));
-		list2.setImmediate(true);
+		createEnabledCheckbox();
+		createLists();
+		createMasterDetailTable();
+		createLabelBoundList();
+	}
 
-		layout.addComponent(list1, "top:50px;left:50px");
-		layout.addComponent(list2, "top:50px;left:500px");
+	private void createLabelBoundList() {
+		// list  and label
+		list3 = new ListSelect("List options bound to list caption");
+		list3.setWidth("200px");
+		list3.setPropertyDataSource(new ObjectProperty<String>("", String.class));
+		list3.setImmediate(true);
 
-		// bind the content of list1 to list2 and vice versa
-		dbc.bindList(VaadinObservables.observeContainerItemSetContents(list1,
-				String.class), VaadinObservables
-				.observeContainerItemSetContents(list2, String.class));
+		layout.addComponent(list3, "top:500px;left:50px");
+		Container ds3 = list3.getContainerDataSource();
+		ds3.addItem("The caption of this list");
+		ds3.addItem("follows the selection");
+		ds3.addItem("in this box here ...");
 
-		// bind the selection of list1 to list2 and vice versa
-		dbc.bindSet(VaadinObservables.observeMultiSelectionAsSet(list1,
-				String.class), VaadinObservables.observeMultiSelectionAsSet(
-				list2, String.class));
+		// bind it
+		dbc.bindValue(
+				VaadinObservables.observeSingleSelection(list3, String.class),
+				VaadinObservables.observeCaption(list3));
+	}
 
-		// bind readonly and enabled
-		dbc.bindValue(VaadinObservables.observeReadonly(list2),
-				VaadinObservables.observeValue(readonly));
-		dbc.bindValue(VaadinObservables.observeEnabled(list2),
-				VaadinObservables.observeValue(enabled));
-
-		Container ds1 = list1.getContainerDataSource();
-		ds1.addItem("Row 1");
-		ds1.addItem("Row 2");
-		ds1.addItem("Row 3");
-		ds1.addItem("Row 4");
-		ds1.addItem("Row 5");
-		ds1.addItem("Row 6");
-		ds1.addItem("Row 7");
-
+	private void createMasterDetailTable() {
 		// table for master-detail binding
 		table = new Table("Master-Detail binding");
 		table.setImmediate(true);
@@ -146,7 +127,7 @@ public class SelectionBindings extends CssLayout {
 		layout.addComponent(text2, "top:300px;left:500px");
 		layout.addComponent(text3, "top:350px;left:500px");
 
-		// bind the selection of list1 to list2 and vise verse
+		// bind the selection of table to the fields
 		dbc.bindValue(VaadinObservables.observeSingleSelectionDetailValue(
 				table, Bar.class, "name"), VaadinObservables
 				.observeValue(text1));
@@ -162,22 +143,62 @@ public class SelectionBindings extends CssLayout {
 				VaadinObservables.observeValue(readonly));
 		dbc.bindValue(VaadinObservables.observeEnabled(table),
 				VaadinObservables.observeValue(enabled));
+	}
 
+	private void createLists() {
 		// lists
-		list3 = new ListSelect("List options bound to list caption");
-		list3.setWidth("200px");
-		list3.setPropertyDataSource(new ObjectProperty<String>("", String.class));
-		list3.setImmediate(true);
+		list1 = new ListSelect("Synchronized multi selection");
+		list1.setMultiSelect(true);
+		list1.setWidth("200px");
+		list1.setValue(new ArrayList<>());
+		list1.setPropertyDataSource(new ObjectProperty<Set>(new HashSet<>(),
+				Set.class));
+		list1.setImmediate(true);
+		list2 = new ListSelect();
+		list2.setWidth("200px");
+		list2.setMultiSelect(true);
+		list2.setPropertyDataSource(new ObjectProperty<Set>(new HashSet<>(),
+				Set.class));
+		list2.setImmediate(true);
 
-		layout.addComponent(list3, "top:500px;left:50px");
-		Container ds3 = list3.getContainerDataSource();
-		ds3.addItem("The caption of this list");
-		ds3.addItem("follows the selection");
-		ds3.addItem("in this box here ...");
+		layout.addComponent(list1, "top:50px;left:50px");
+		layout.addComponent(list2, "top:50px;left:500px");
 
-		dbc.bindValue(
-				VaadinObservables.observeSingleSelection(list3, String.class),
-				VaadinObservables.observeCaption(list3));
+		// bind the content of list1 to list2 and vice versa
+		dbc.bindList(VaadinObservables.observeContainerItemSetContents(list1,
+				String.class), VaadinObservables
+				.observeContainerItemSetContents(list2, String.class));
+
+		// bind the selection of list1 to list2 and vice versa
+		dbc.bindSet(VaadinObservables.observeMultiSelectionAsSet(list1,
+				String.class), VaadinObservables.observeMultiSelectionAsSet(
+				list2, String.class));
+
+		// bind readonly and enabled
+		dbc.bindValue(VaadinObservables.observeReadonly(list2),
+				VaadinObservables.observeValue(readonly));
+		dbc.bindValue(VaadinObservables.observeEnabled(list2),
+				VaadinObservables.observeValue(enabled));
+
+		// add values to lists after binding so we don't overwrite them with an empty list
+		Container ds1 = list1.getContainerDataSource();
+		ds1.addItem("Row 1");
+		ds1.addItem("Row 2");
+		ds1.addItem("Row 3");
+		ds1.addItem("Row 4");
+		ds1.addItem("Row 5");
+		ds1.addItem("Row 6");
+		ds1.addItem("Row 7");
+	}
+
+	private void createEnabledCheckbox() {
+		readonly = new CheckBox("Readonly");
+		readonly.setImmediate(true);
+		enabled = new CheckBox("Enabled");
+		enabled.setValue(true);
+		enabled.setImmediate(true);
+		layout.addComponent(readonly, "top:25px;left:800px");
+		layout.addComponent(enabled, "top:25px;left:900px");
 	}
 
 	// protected static class ValueBean()

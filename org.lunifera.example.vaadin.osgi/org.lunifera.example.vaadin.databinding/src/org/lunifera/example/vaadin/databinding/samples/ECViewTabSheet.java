@@ -49,48 +49,17 @@ public class ECViewTabSheet extends CssLayout {
 		YTabSheet yTabsheet = factory.createTabSheet();
 		yLayout.getElements().add(yTabsheet);
 
-		// tab 1
-		YTab yTab1 = factory.createTab();
-		yTab1.setLabel("Tab 1");
+		prepareTab1(yTabsheet);
+		prepareTab2(yTabsheet);
+		prepareTab3(yTabsheet);
 
-		// tab 1 content
-		YVerticalLayout yTab1Content = factory.createVerticalLayout();
-		yTab1Content.setFillVertical(false);
-		yTab1.setEmbeddable(yTab1Content);
-		YTextField yTextfield1 = factory.createTextField();
-		yTextfield1.setLabel("Name");
-		yTab1Content.addElement(yTextfield1);
-		YTextField yTextfield2 = factory.createTextField();
-		yTextfield2.setLabel("First Name");
-		yTab1Content.addElement(yTextfield2);
-		YTextField yTextfield3 = factory.createTextField();
-		yTextfield3.setLabel("Company");
-		yTab1Content.addElement(yTextfield3);
-		YTextField yTextfield4 = factory.createTextField();
-		yTextfield4.setLabel("Job Title");
-		yTab1Content.addElement(yTextfield4);
+		// ... and render
+		VaadinRenderer renderer = new VaadinRenderer();
+		renderer.render(layout, yView, null);
 
-		yTabsheet.getTabs().add(yTab1);
+	}
 
-		// tab 2
-		YTab yTab2 = factory.createTab();
-		yTab2.setLabel("Tab 2");
-
-		// tab 2 content
-		YVerticalLayout yTab2Content = factory.createVerticalLayout();
-		yTab2Content.setFillVertical(false);
-		yTab2.setEmbeddable(yTab2Content);
-		YTextField yTextfield5 = factory.createTextField();
-		yTextfield5.setLabel("Name");
-		yTab2Content.addElement(yTextfield5);
-		YNumericField yNumericField = factory.createNumericField();
-		yNumericField.setLabel("Value");
-		yTab2Content.addElement(yNumericField);
-		YDateTime YDateTime = factory.createDateTime();
-		YDateTime.setLabel("Valid until");
-		yTab2Content.addElement(YDateTime);
-		yTabsheet.getTabs().add(yTab2);
-
+	private void prepareTab3(YTabSheet yTabsheet) {
 		// tab 3
 		YTab yTab3 = factory.createTab();
 		yTab3.setLabel("Tab 3");
@@ -115,11 +84,52 @@ public class ECViewTabSheet extends CssLayout {
 		});
 		yTab3Content.addElement(yButton);
 		yTabsheet.getTabs().add(yTab3);
+	}
 
-		// ... and render
-		VaadinRenderer renderer = new VaadinRenderer();
-		renderer.render(layout, yView, null);
+	private void prepareTab2(YTabSheet yTabsheet) {
+		// tab 2
+		YTab yTab2 = factory.createTab();
+		yTab2.setLabel("Tab 2");
 
+		// tab 2 content
+		YVerticalLayout yTab2Content = factory.createVerticalLayout();
+		yTab2Content.setFillVertical(false);
+		yTab2.setEmbeddable(yTab2Content);
+		YTextField yTextfield5 = factory.createTextField();
+		yTextfield5.setLabel("Name");
+		yTab2Content.addElement(yTextfield5);
+		YNumericField yNumericField = factory.createNumericField();
+		yNumericField.setLabel("Value");
+		yTab2Content.addElement(yNumericField);
+		YDateTime YDateTime = factory.createDateTime();
+		YDateTime.setLabel("Valid until");
+		yTab2Content.addElement(YDateTime);
+		yTabsheet.getTabs().add(yTab2);
+	}
+
+	private void prepareTab1(YTabSheet yTabsheet) {
+		// tab 1
+		YTab yTab1 = factory.createTab();
+		yTab1.setLabel("Tab 1");
+
+		// tab 1 content
+		YVerticalLayout yTab1Content = factory.createVerticalLayout();
+		yTab1Content.setFillVertical(false);
+		yTab1.setEmbeddable(yTab1Content);
+		YTextField yTextfield1 = factory.createTextField();
+		yTextfield1.setLabel("Name");
+		yTab1Content.addElement(yTextfield1);
+		YTextField yTextfield2 = factory.createTextField();
+		yTextfield2.setLabel("First Name");
+		yTab1Content.addElement(yTextfield2);
+		YTextField yTextfield3 = factory.createTextField();
+		yTextfield3.setLabel("Company");
+		yTab1Content.addElement(yTextfield3);
+		YTextField yTextfield4 = factory.createTextField();
+		yTextfield4.setLabel("Job Title");
+		yTab1Content.addElement(yTextfield4);
+
+		yTabsheet.getTabs().add(yTab1);
 	}
 
 }

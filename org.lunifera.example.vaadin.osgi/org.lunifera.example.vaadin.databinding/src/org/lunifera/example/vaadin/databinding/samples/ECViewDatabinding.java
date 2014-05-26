@@ -34,6 +34,7 @@ public class ECViewDatabinding extends CssLayout {
 	private CssLayout rootLayout = new CssLayout();
 
 	private AbsoluteLayout layout;
+	private YBeanSlot ySelectionSlot;
 
 	public ECViewDatabinding() throws ContextException {
 		setSizeFull();
@@ -54,62 +55,43 @@ public class ECViewDatabinding extends CssLayout {
 		// create bindingset
 		YBindingSet yBindingSet = yView.getOrCreateBindingSet();
 
-		// Textfields
-		YVerticalLayout yLayoutAB = factory.createVerticalLayout();
-		yLayoutAB.setFillVertical(false);
-		yLayout.addElement(yLayoutAB);
+		// create layout
+		prepareColumn1(yLayout, yBindingSet);
+		prepareColumn2(yLayout, yBindingSet);
+		YList yList2 = prepareColumn3(yLayout, yBindingSet);
+		YTable yTable = prepareColumn4(yView, yLayout, yBindingSet);
 
-		YTextField yTextfield1 = factory.createTextField();
-		yTextfield1.setLabel("A (binds to B):");
-		YTextField yTextfield2 = factory.createTextField();
-		yTextfield2.setLabel("B (binds to A):");
-		yLayoutAB.getElements().add(yTextfield1);
-		yLayoutAB.getElements().add(yTextfield2);
+		// render now, fill in values later
+		// to avoid overwriting values with bindings to empty fields
+		VaadinRenderer renderer = new VaadinRenderer();
+		renderer.render(layout, yView, null);
 
-		// textField1 <--> textField2
-		yBindingSet.addBinding(yTextfield1.createValueEndpoint(),
-				yTextfield2.createValueEndpoint());
+		// fill values into lists and table now
+		setValues(yList2, yTable);
+	}
 
-		// Datefields
-		YVerticalLayout yLayoutCD = factory.createVerticalLayout();
-		yLayoutCD.setFillVertical(false);
-		yLayout.addElement(yLayoutCD);
+	private void setValues(YList yList2, YTable yTable) {
+		// set the values of the list and table
+		yList2.getCollection().addAll(
+				Arrays.asList("Row no 1", "Row no 2", "Row no 3", "Row no 4",
+						"Row no 5"));
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy, MM, dd");
+		try {
+			yTable.getCollection()
+					.addAll(Arrays.asList(
+							new TablePojo("Alfred", 35, sdf
+									.parse("1978, 10, 14")),
+							new TablePojo("Bert", 25, sdf.parse("1988, 07, 30")),
+							new TablePojo("Charlie", 15, sdf
+									.parse("1999, 04, 17")), new TablePojo(
+									"Daniel", 45, sdf.parse("1969, 02, 22"))));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
 
-		YDateTime yDatefield1 = factory.createDateTime();
-		yDatefield1.setLabel("C (binds to D):");
-		YDateTime yDatefield2 = factory.createDateTime();
-		yDatefield2.setLabel("D (binds to C):");
-		yLayoutCD.getElements().add(yDatefield1);
-		yLayoutCD.getElements().add(yDatefield2);
-
-		// dateField1 <--> dateField2
-		yBindingSet.addBinding(yDatefield1.createValueEndpoint(),
-				yDatefield2.createValueEndpoint());
-
-		// Lists
-		YVerticalLayout yLayoutEF = factory.createVerticalLayout();
-		yLayoutEF.setFillVertical(false);
-		yLayout.addElement(yLayoutEF);
-
-		// list 1
-		YList yList1 = factory.createList();
-		yList1.setType(String.class);
-		yList1.setSelectionType(YSelectionType.MULTI);
-		yList1.setLabel("E (binds to F):");
-		yLayoutEF.getElements().add(yList1);
-		// list 2
-		YList yList2 = factory.createList();
-		yList2.setType(String.class);
-		yList2.setSelectionType(YSelectionType.MULTI);
-		yList2.setLabel("F (binds to E):");
-		yLayoutEF.getElements().add(yList2);
-
-		// register the bindings
-		yBindingSet.addBinding(yList1.createCollectionEndpoint(),
-				yList2.createCollectionEndpoint());
-		yBindingSet.addBinding(yList1.createMultiSelectionEndpoint(),
-				yList2.createMultiSelectionEndpoint());
-
+	private YTable prepareColumn4(YView yView, YHorizontalLayout yLayout,
+			YBindingSet yBindingSet) {
 		// Master-Detail-Binding from table to fields
 		YVerticalLayout yLayoutGH = factory.createVerticalLayout();
 		yLayoutGH.setFillVertical(false);
@@ -132,12 +114,8 @@ public class ECViewDatabinding extends CssLayout {
 		yDateTime.setLabel("Birthdate:");
 		yLayoutGH.addElement(yDateTime);
 
-		// render now, fill in values later
-		VaadinRenderer renderer = new VaadinRenderer();
-		renderer.render(layout, yView, null);
-
 		// create a beanslot that keeps the selected bean from the table
-		YBeanSlot ySelectionSlot = CoreModelFactory.eINSTANCE.createYBeanSlot();
+		ySelectionSlot = CoreModelFactory.eINSTANCE.createYBeanSlot();
 		ySelectionSlot.setName("table-selection");
 		ySelectionSlot.setValueType(TablePojo.class);
 		yView.getBeanSlots().add(ySelectionSlot);
@@ -173,24 +151,73 @@ public class ECViewDatabinding extends CssLayout {
 		ySelection_DateEndpoint.setAttributePath("value.birthdate");
 		yBindingSet.addBinding(yDateTime.createValueEndpoint(),
 				ySelection_DateEndpoint);
+		return yTable;
+	}
 
-		// set the values of the list and table
-		yList2.getCollection().addAll(
-				Arrays.asList("Row no 1", "Row no 2", "Row no 3", "Row no 4",
-						"Row no 5"));
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy, MM, dd");
-		try {
-			yTable.getCollection()
-					.addAll(Arrays.asList(
-							new TablePojo("Alfred", 35, sdf
-									.parse("1978, 10, 14")),
-							new TablePojo("Bert", 25, sdf.parse("1988, 07, 30")),
-							new TablePojo("Charlie", 15, sdf
-									.parse("1999, 04, 17")), new TablePojo(
-									"Daniel", 45, sdf.parse("1969, 02, 22"))));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+	private YList prepareColumn3(YHorizontalLayout yLayout,
+			YBindingSet yBindingSet) {
+		// Lists
+		YVerticalLayout yLayoutEF = factory.createVerticalLayout();
+		yLayoutEF.setFillVertical(false);
+		yLayout.addElement(yLayoutEF);
+
+		// list 1
+		YList yList1 = factory.createList();
+		yList1.setType(String.class);
+		yList1.setSelectionType(YSelectionType.MULTI);
+		yList1.setLabel("E (binds to F):");
+		yLayoutEF.getElements().add(yList1);
+		// list 2
+		YList yList2 = factory.createList();
+		yList2.setType(String.class);
+		yList2.setSelectionType(YSelectionType.MULTI);
+		yList2.setLabel("F (binds to E):");
+		yLayoutEF.getElements().add(yList2);
+
+		// register the bindings
+		yBindingSet.addBinding(yList1.createCollectionEndpoint(),
+				yList2.createCollectionEndpoint());
+		yBindingSet.addBinding(yList1.createMultiSelectionEndpoint(),
+				yList2.createMultiSelectionEndpoint());
+		return yList2;
+	}
+
+	private void prepareColumn2(YHorizontalLayout yLayout,
+			YBindingSet yBindingSet) {
+		// Datefields
+		YVerticalLayout yLayoutCD = factory.createVerticalLayout();
+		yLayoutCD.setFillVertical(false);
+		yLayout.addElement(yLayoutCD);
+
+		YDateTime yDatefield1 = factory.createDateTime();
+		yDatefield1.setLabel("C (binds to D):");
+		YDateTime yDatefield2 = factory.createDateTime();
+		yDatefield2.setLabel("D (binds to C):");
+		yLayoutCD.getElements().add(yDatefield1);
+		yLayoutCD.getElements().add(yDatefield2);
+
+		// dateField1 <--> dateField2
+		yBindingSet.addBinding(yDatefield1.createValueEndpoint(),
+				yDatefield2.createValueEndpoint());
+	}
+
+	private void prepareColumn1(YHorizontalLayout yLayout,
+			YBindingSet yBindingSet) {
+		// Textfields
+		YVerticalLayout yLayoutAB = factory.createVerticalLayout();
+		yLayoutAB.setFillVertical(false);
+		yLayout.addElement(yLayoutAB);
+
+		YTextField yTextfield1 = factory.createTextField();
+		yTextfield1.setLabel("A (binds to B):");
+		YTextField yTextfield2 = factory.createTextField();
+		yTextfield2.setLabel("B (binds to A):");
+		yLayoutAB.getElements().add(yTextfield1);
+		yLayoutAB.getElements().add(yTextfield2);
+
+		// textField1 <--> textField2
+		yBindingSet.addBinding(yTextfield1.createValueEndpoint(),
+				yTextfield2.createValueEndpoint());
 	}
 
 	public static class TablePojo {
