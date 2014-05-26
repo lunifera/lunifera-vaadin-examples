@@ -1,5 +1,7 @@
 package org.lunifera.example.vaadin.databinding.samples;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -23,6 +25,9 @@ import org.lunifera.runtime.web.ecview.presentation.vaadin.VaadinRenderer;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.CssLayout;
 
+/**
+ * Demonstrates databinding between fields based on ECView and EMF bindings.
+ */
 public class ECViewDatabinding extends CssLayout {
 
 	private SimpleExtensionModelFactory factory = new SimpleExtensionModelFactory();
@@ -37,7 +42,7 @@ public class ECViewDatabinding extends CssLayout {
 
 	public void init() throws ContextException {
 
-		// create layout
+		// Vaadin basis ...
 		layout = new AbsoluteLayout();
 		layout.setSizeFull();
 		addComponent(layout);
@@ -47,11 +52,9 @@ public class ECViewDatabinding extends CssLayout {
 		yView.setContent(yLayout);
 
 		// create bindingset
-
 		YBindingSet yBindingSet = yView.getOrCreateBindingSet();
 
 		// Textfields
-
 		YVerticalLayout yLayoutAB = factory.createVerticalLayout();
 		yLayoutAB.setFillVertical(false);
 		yLayout.addElement(yLayoutAB);
@@ -68,7 +71,6 @@ public class ECViewDatabinding extends CssLayout {
 				yTextfield2.createValueEndpoint());
 
 		// Datefields
-
 		YVerticalLayout yLayoutCD = factory.createVerticalLayout();
 		yLayoutCD.setFillVertical(false);
 		yLayout.addElement(yLayoutCD);
@@ -94,14 +96,12 @@ public class ECViewDatabinding extends CssLayout {
 		yList1.setType(String.class);
 		yList1.setSelectionType(YSelectionType.MULTI);
 		yList1.setLabel("E (binds to F):");
+		yLayoutEF.getElements().add(yList1);
 		// list 2
 		YList yList2 = factory.createList();
 		yList2.setType(String.class);
 		yList2.setSelectionType(YSelectionType.MULTI);
 		yList2.setLabel("F (binds to E):");
-
-		// add lists to layout
-		yLayoutEF.getElements().add(yList1);
 		yLayoutEF.getElements().add(yList2);
 
 		// register the bindings
@@ -110,7 +110,7 @@ public class ECViewDatabinding extends CssLayout {
 		yBindingSet.addBinding(yList1.createMultiSelectionEndpoint(),
 				yList2.createMultiSelectionEndpoint());
 
-		// Master-Detail-Binding
+		// Master-Detail-Binding from table to fields
 		YVerticalLayout yLayoutGH = factory.createVerticalLayout();
 		yLayoutGH.setFillVertical(false);
 		yLayout.addElement(yLayoutGH);
@@ -122,17 +122,17 @@ public class ECViewDatabinding extends CssLayout {
 
 		YTextField yTextfield3 = factory.createTextField();
 		yTextfield3.setLabel("Name:");
+		yLayoutGH.addElement(yTextfield3);
+
 		YNumericField yNumericField = factory.createNumericField();
 		yNumericField.setLabel("Age:");
+		yLayoutGH.addElement(yNumericField);
+
 		YDateTime yDateTime = factory.createDateTime();
 		yDateTime.setLabel("Birthdate:");
-		yLayoutGH.addElement(yTextfield3);
-		yLayoutGH.addElement(yNumericField);
 		yLayoutGH.addElement(yDateTime);
 
-		// register the bindings
-
-		// RENDER !!
+		// render now, fill in values later
 		VaadinRenderer renderer = new VaadinRenderer();
 		renderer.render(layout, yView, null);
 
@@ -176,11 +176,21 @@ public class ECViewDatabinding extends CssLayout {
 
 		// set the values of the list and table
 		yList2.getCollection().addAll(
-				Arrays.asList("Row no 1", "Row no 2", "Row no 3"));
-		yTable.getCollection().addAll(
-				Arrays.asList(new TablePojo("Anton", 35, new Date(78, 10, 14)),
-						new TablePojo("Bert", 35, new Date(78, 12, 24)),
-						new TablePojo("Charlie", 15, new Date(99, 5, 11))));
+				Arrays.asList("Row no 1", "Row no 2", "Row no 3", "Row no 4",
+						"Row no 5"));
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy, MM, dd");
+		try {
+			yTable.getCollection()
+					.addAll(Arrays.asList(
+							new TablePojo("Alfred", 35, sdf
+									.parse("1978, 10, 14")),
+							new TablePojo("Bert", 25, sdf.parse("1988, 07, 30")),
+							new TablePojo("Charlie", 15, sdf
+									.parse("1999, 04, 17")), new TablePojo(
+									"Daniel", 45, sdf.parse("1969, 02, 22"))));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static class TablePojo {

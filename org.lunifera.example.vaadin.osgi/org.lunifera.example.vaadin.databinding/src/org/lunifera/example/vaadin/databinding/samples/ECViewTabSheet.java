@@ -18,6 +18,10 @@ import org.lunifera.runtime.web.ecview.presentation.vaadin.VaadinRenderer;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.CssLayout;
 
+/**
+ *  Demonstrates a tabsheet with various elements done with ECView.
+ *
+ */
 public class ECViewTabSheet extends CssLayout {
 
 	private SimpleExtensionModelFactory factory = new SimpleExtensionModelFactory();
@@ -34,9 +38,11 @@ public class ECViewTabSheet extends CssLayout {
 	@SuppressWarnings("rawtypes")
 	public void init() throws ContextException {
 
+		// Vaadin basis
 		layout = new AbsoluteLayout();
 		addComponent(layout);
-
+		
+		// ECView starts here: Create tabsheet ...
 		YView yView = factory.createView();
 		YVerticalLayout yLayout = factory.createVerticalLayout();
 		yView.setContent(yLayout);
@@ -108,9 +114,9 @@ public class ECViewTabSheet extends CssLayout {
 			}
 		});
 		yTab3Content.addElement(yButton);
-
 		yTabsheet.getTabs().add(yTab3);
 
+		// ... and render
 		VaadinRenderer renderer = new VaadinRenderer();
 		renderer.render(layout, yView, null);
 

@@ -2,6 +2,11 @@ package org.lunifera.example.vaadin.databinding.samples;
 
 import java.util.Date;
 
+/**
+ * Demonstrates databinding - values in various kinds of fields are bound together.
+ * Done with standard Vaadin.
+ */
+
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.UpdateValueStrategy;
 import org.lunifera.runtime.web.vaadin.databinding.VaadinObservables;

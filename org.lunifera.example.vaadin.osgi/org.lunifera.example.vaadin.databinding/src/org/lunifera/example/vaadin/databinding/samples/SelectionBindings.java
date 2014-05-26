@@ -1,6 +1,13 @@
 package org.lunifera.example.vaadin.databinding.samples;
 
 import java.util.ArrayList;
+
+/**
+ * Demonstrates the binding of selections between lists and the
+ * master-detail binding between a table and textfields.
+ * Done with standard Vaadin.
+ */
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -72,12 +79,12 @@ public class SelectionBindings extends CssLayout {
 		layout.addComponent(list1, "top:50px;left:50px");
 		layout.addComponent(list2, "top:50px;left:500px");
 
-		// bind the content of list1 to list2 and vise verse
+		// bind the content of list1 to list2 and vice versa
 		dbc.bindList(VaadinObservables.observeContainerItemSetContents(list1,
 				String.class), VaadinObservables
 				.observeContainerItemSetContents(list2, String.class));
 
-		// bind the selection of list1 to list2 and vise verse
+		// bind the selection of list1 to list2 and vice versa
 		dbc.bindSet(VaadinObservables.observeMultiSelectionAsSet(list1,
 				String.class), VaadinObservables.observeMultiSelectionAsSet(
 				list2, String.class));
@@ -97,7 +104,7 @@ public class SelectionBindings extends CssLayout {
 		ds1.addItem("Row 6");
 		ds1.addItem("Row 7");
 
-		// table
+		// table for master-detail binding
 		table = new Table("Master-Detail binding");
 		table.setImmediate(true);
 		table.setHeight("200px");

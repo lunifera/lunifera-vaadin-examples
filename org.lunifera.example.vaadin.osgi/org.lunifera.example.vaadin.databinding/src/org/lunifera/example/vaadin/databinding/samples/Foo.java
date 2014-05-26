@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
+/** 
+ *  Helper class for master-detail binding in SelectionBindings.java
+ */
 @SuppressWarnings("serial")
 public class Foo implements Serializable {
 	  private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);

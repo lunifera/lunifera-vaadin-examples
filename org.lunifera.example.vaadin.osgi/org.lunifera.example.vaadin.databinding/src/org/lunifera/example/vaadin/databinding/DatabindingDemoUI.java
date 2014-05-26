@@ -54,7 +54,6 @@ public class DatabindingDemoUI extends UI {
 			tabsheet.addTab(new ECViewDatabinding(), "ECView Bindings");
 
 		} catch (ContextException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		layout.addComponent(tabsheet);

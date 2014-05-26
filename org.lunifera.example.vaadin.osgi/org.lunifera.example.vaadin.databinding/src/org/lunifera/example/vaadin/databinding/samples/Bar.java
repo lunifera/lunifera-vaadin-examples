@@ -4,6 +4,9 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 
+/** 
+ *  Helper class for master-detail binding in SelectionBindings.java
+ */
 @SuppressWarnings("serial")
 public class Bar implements Serializable {
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(

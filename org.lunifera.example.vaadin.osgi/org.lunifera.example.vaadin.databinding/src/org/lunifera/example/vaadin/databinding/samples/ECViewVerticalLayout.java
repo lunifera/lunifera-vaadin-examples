@@ -19,6 +19,10 @@ import com.vaadin.ui.ListSelect;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
 
+/**
+ *  Demonstrates a vertical layout done with ECView.
+ *
+ */
 public class ECViewVerticalLayout extends CssLayout {
 
 	private SimpleExtensionModelFactory factory = new SimpleExtensionModelFactory();
@@ -32,10 +36,12 @@ public class ECViewVerticalLayout extends CssLayout {
 
 	public void init() throws ContextException {
 
+		// Vaadin basis
 		layout = new AbsoluteLayout();
 		layout.setSizeFull();
 		addComponent(layout);
 
+		// ECView: define elements ...
 		YView yView = factory.createView();
 		YVerticalLayout yLayout = factory.createVerticalLayout();
 		yLayout.setFillVertical(false);
@@ -50,11 +56,13 @@ public class ECViewVerticalLayout extends CssLayout {
 		YTextField yTextfield4 = factory.createTextField();
 		yTextfield4.setLabel("Owner");
 
+		// ... add elements ...
 		yLayout.getElements().add(yTextfield1);
 		yLayout.getElements().add(yTextfield2);
 		yLayout.getElements().add(yTextfield3);
 		yLayout.getElements().add(yTextfield4);
 
+		// ... and render
 		VaadinRenderer renderer = new VaadinRenderer();
 		renderer.render(layout, yView, null);
 
