@@ -20,6 +20,7 @@ import org.lunifera.example.vaadin.databinding.samples.ECViewDatabinding;
 import org.lunifera.example.vaadin.databinding.samples.ECViewHorizontalLayout;
 import org.lunifera.example.vaadin.databinding.samples.ECViewTabSheet;
 import org.lunifera.example.vaadin.databinding.samples.ECViewVerticalLayout;
+import org.lunifera.example.vaadin.databinding.samples.LocaleBindings;
 import org.lunifera.example.vaadin.databinding.samples.SelectionBindings;
 import org.lunifera.example.vaadin.databinding.samples.ValueBindings;
 import org.lunifera.runtime.web.vaadin.databinding.VaadinObservables;
@@ -47,12 +48,12 @@ public class DatabindingDemoUI extends UI {
 		tabsheet.setSizeFull();
 		tabsheet.addTab(new ValueBindings(), "Value bindings");
 		tabsheet.addTab(new SelectionBindings(), "Selection bindings");
+		tabsheet.addTab(new LocaleBindings(), "Locales combo");
 		try {
 			tabsheet.addTab(new ECViewVerticalLayout(), "ECView Vertical");
 			tabsheet.addTab(new ECViewHorizontalLayout(), "ECView Horizontal");
 			tabsheet.addTab(new ECViewTabSheet(), "ECView Tabsheet");
 			tabsheet.addTab(new ECViewDatabinding(), "ECView Bindings");
-
 		} catch (ContextException e) {
 			e.printStackTrace();
 		}

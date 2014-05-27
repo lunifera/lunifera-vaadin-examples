@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         id="application"
+         name="org.lunifera.example.vaadin.databinding"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="org.lunifera.example.vaadin.databinding.DummyApplication">
+         </run>
+      </application>
+   </extension>
+</plugin>

@@ -87,7 +87,7 @@ public class Activator implements BundleActivator,
 		resourceProvider = new ResourceProvider();
 
 		handleStartedBundles(context);
-		
+
 		// register this instance as a bundle listener to an reference to all
 		// vaadin bundles. Used to find the static resources.
 		bundleContext.addBundleListener(this);
@@ -119,7 +119,8 @@ public class Activator implements BundleActivator,
 		for (Bundle bundle : context.getBundles()) {
 			String name = bundle.getSymbolicName();
 			if (bundle.getState() == Bundle.ACTIVE
-					&& name.startsWith("com.vaadin")) {
+					&& (name.startsWith("com.vaadin") || name
+							.equals("org.lunifera.example.vaadin.databinding"))) {
 				resourceProvider.add(bundle);
 			}
 		}
@@ -130,7 +131,8 @@ public class Activator implements BundleActivator,
 		// tracks the starting and stopping of vaadin bundles. If a bundle is a
 		// vaadin bundle it will be added to the resource provider for lookups.
 		String name = event.getBundle().getSymbolicName();
-		if (name.startsWith("com.vaadin")) {
+		if (name.startsWith("com.vaadin")
+				|| name.equals("org.lunifera.example.vaadin.databinding")) {
 			if (event.getType() == BundleEvent.STARTED) {
 				resourceProvider.add(event.getBundle());
 			} else if (event.getType() == BundleEvent.STOPPED) {
