@@ -17,6 +17,7 @@ package org.lunifera.example.vaadin.databinding;
 
 import org.eclipse.emf.ecp.ecview.common.context.ContextException;
 import org.lunifera.example.vaadin.databinding.samples.ECViewDatabinding;
+import org.lunifera.example.vaadin.databinding.samples.ECViewGridLayout;
 import org.lunifera.example.vaadin.databinding.samples.ECViewHorizontalLayout;
 import org.lunifera.example.vaadin.databinding.samples.ECViewTabSheet;
 import org.lunifera.example.vaadin.databinding.samples.ECViewVerticalLayout;
@@ -52,6 +53,7 @@ public class DatabindingDemoUI extends UI {
 		try {
 			tabsheet.addTab(new ECViewVerticalLayout(), "ECView Vertical");
 			tabsheet.addTab(new ECViewHorizontalLayout(), "ECView Horizontal");
+			tabsheet.addTab(new ECViewGridLayout(), "ECView Gridlayout");
 			tabsheet.addTab(new ECViewTabSheet(), "ECView Tabsheet");
 			tabsheet.addTab(new ECViewDatabinding(), "ECView Bindings");
 		} catch (ContextException e) {
