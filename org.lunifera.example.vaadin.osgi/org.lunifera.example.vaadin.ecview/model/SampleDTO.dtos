@@ -1,0 +1,21 @@
+package org.lunifera.example.vaadin.ecview.dtos {
+
+	import org.lunifera.example.vaadin.ecview.*;
+	import org.lunifera.example.vaadin.ecview.dt.*;
+
+	dto AbstractDto wraps AbstractEntity {
+		inherit var number;
+		inherit var description;
+	}
+
+	dto SampleDto extends AbstractDto wraps SampleEntity {
+		inherit var dateAttribute;
+		inherit var timeAttribute;
+		inherit var booleanAttribute;
+		inherit var numericAttribute;
+		inherit var decimalAttribute;
+		
+		var String notInherited;
+	}
+
+}

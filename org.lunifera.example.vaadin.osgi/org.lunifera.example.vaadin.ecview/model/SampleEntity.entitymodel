@@ -1,0 +1,32 @@
+package org.lunifera.example.vaadin.ecview {
+
+	import org.lunifera.example.vaadin.ecview.dt.*;
+
+	mapped superclass AbstractEntity {
+		uuid String id;
+		var String number;
+		var String description;
+	}
+
+	entity SampleEntity extends AbstractEntity {
+		var Date dateAttribute;
+		var Time timeAttribute;
+		var boolean booleanAttribute;
+		var Numeric numericAttribute;
+		var Decimal decimalAttribute;
+		var TheEnum enumValues;
+
+		var Address deliveryAddress;
+		var Address invoiceAddress;
+	}
+
+	bean Address {
+		var String street;
+		var String postalCode;
+	}
+
+	enum TheEnum {
+		OPTION_1, OPTION_2, OPTION_3
+	}
+
+} 

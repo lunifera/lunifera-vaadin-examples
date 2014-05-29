@@ -1,0 +1,9 @@
+package org.lunifera.example.vaadin.ecview.dt {
+	
+	datatype String jvmType String;
+	datatype Date dateType date;
+	datatype Time dateType time;
+	datatype boolean jvmType Boolean as primitive;
+	datatype Numeric jvmType Integer as primitive;
+	datatype Decimal jvmType Double as primitive;
+}

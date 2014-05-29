@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="org.lunifera.example.vaadin.ecview.product" uid="org.lunifera.example.vaadin.ecview.product" application="org.lunifera.example.vaadin.ecview.application" version="0.0.1" useFeatures="false" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-consoleLog -console</programArgs>
+      <vmArgs>-Declipse.ignoreApp=true -Dosgi.noShutdown=true -Dorg.osgi.service.http.port=8082</vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <vm>
+      <macos include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</macos>
+   </vm>
+
+   <plugins>
+      <plugin id="com.ibm.icu"/>
+      <plugin id="com.vaadin.client"/>
+      <plugin id="com.vaadin.client-compiled"/>
+      <plugin id="com.vaadin.server"/>
+      <plugin id="com.vaadin.shared"/>
+      <plugin id="com.vaadin.shared.deps"/>
+      <plugin id="com.vaadin.themes"/>
+      <plugin id="javax.servlet"/>
+      <plugin id="javax.xml"/>
+      <plugin id="org.apache.commons.beanutils"/>
+      <plugin id="org.apache.commons.collections"/>
+      <plugin id="org.apache.commons.lang"/>
+      <plugin id="org.apache.commons.logging"/>
+      <plugin id="org.apache.felix.gogo.command"/>
+      <plugin id="org.apache.felix.gogo.runtime"/>
+      <plugin id="org.apache.felix.gogo.shell"/>
+      <plugin id="org.eclipse.core.contenttype"/>
+      <plugin id="org.eclipse.core.databinding"/>
+      <plugin id="org.eclipse.core.databinding.beans"/>
+      <plugin id="org.eclipse.core.databinding.observable"/>
+      <plugin id="org.eclipse.core.databinding.property"/>
+      <plugin id="org.eclipse.core.expressions"/>
+      <plugin id="org.eclipse.core.filesystem"/>
+      <plugin id="org.eclipse.core.jobs"/>
+      <plugin id="org.eclipse.core.resources"/>
+      <plugin id="org.eclipse.core.runtime"/>
+      <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
+      <plugin id="org.eclipse.emf.common"/>
+      <plugin id="org.eclipse.emf.databinding"/>
+      <plugin id="org.eclipse.emf.ecore"/>
+      <plugin id="org.eclipse.emf.ecore.xmi"/>
+      <plugin id="org.eclipse.emf.ecp.ecview.common"/>
+      <plugin id="org.eclipse.emf.ecp.ecview.common.editparts.emf"/>
+      <plugin id="org.eclipse.emf.ecp.ecview.common.model"/>
+      <plugin id="org.eclipse.emf.ecp.ecview.databinding.beans"/>
+      <plugin id="org.eclipse.emf.ecp.ecview.databinding.emf"/>
+      <plugin id="org.eclipse.emf.ecp.ecview.extension.editparts"/>
+      <plugin id="org.eclipse.emf.ecp.ecview.extension.editparts.emf"/>
+      <plugin id="org.eclipse.emf.ecp.ecview.extension.model"/>
+      <plugin id="org.eclipse.emf.ecp.ecview.ui.presentation.common"/>
+      <plugin id="org.eclipse.emf.ecp.ecview.util.emf"/>
+      <plugin id="org.eclipse.equinox.app"/>
+      <plugin id="org.eclipse.equinox.common"/>
+      <plugin id="org.eclipse.equinox.console"/>
+      <plugin id="org.eclipse.equinox.ds"/>
+      <plugin id="org.eclipse.equinox.http.jetty"/>
+      <plugin id="org.eclipse.equinox.http.servlet"/>
+      <plugin id="org.eclipse.equinox.preferences"/>
+      <plugin id="org.eclipse.equinox.registry"/>
+      <plugin id="org.eclipse.equinox.transforms.hook" fragment="true"/>
+      <plugin id="org.eclipse.equinox.util"/>
+      <plugin id="org.eclipse.equinox.weaving.hook" fragment="true"/>
+      <plugin id="org.eclipse.jetty.continuation"/>
+      <plugin id="org.eclipse.jetty.http"/>
+      <plugin id="org.eclipse.jetty.io"/>
+      <plugin id="org.eclipse.jetty.security"/>
+      <plugin id="org.eclipse.jetty.server"/>
+      <plugin id="org.eclipse.jetty.servlet"/>
+      <plugin id="org.eclipse.jetty.util"/>
+      <plugin id="org.eclipse.osgi"/>
+      <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.jsoup"/>
+      <plugin id="org.lunifera.dependencies.fragment.jdk" fragment="true"/>
+      <plugin id="org.lunifera.example.vaadin.databinding"/>
+      <plugin id="org.lunifera.runtime.web.ecview.presentation.vaadin"/>
+      <plugin id="org.lunifera.runtime.web.vaadin.components"/>
+      <plugin id="org.lunifera.runtime.web.vaadin.databinding"/>
+      <plugin id="org.slf4j.api"/>
+   </plugins>
+
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.equinox.http.jetty" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.osgi" autoStart="true" startLevel="-1" />
+      <plugin id="org.lunifera.example.vaadin.databinding" autoStart="true" startLevel="0" />
+   </configurations>
+
+</product>
