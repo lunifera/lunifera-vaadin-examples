@@ -31,6 +31,7 @@ import com.vaadin.ui.themes.Reindeer;
 public class ECViewDemoUI extends UI {
 	@Override
 	protected void init(VaadinRequest request) {
+		setStyleName(Reindeer.LAYOUT_BLACK);
 
 		VaadinObservables.getRealm(getUI());
 

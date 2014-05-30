@@ -14,10 +14,16 @@ package org.lunifera.example.vaadin.ecview {
 		var boolean booleanAttribute;
 		var Numeric numericAttribute;
 		var Decimal decimalAttribute;
-		var TheEnum enumValues;
+		var ShortEnum shortEnumValues;
+		var LongerEnum longerEnumValues;
 
-		var Address deliveryAddress;
+		ref cascade Detail [*] details opposite parent;
+
 		var Address invoiceAddress;
+	}
+
+	entity Detail extends AbstractEntity {
+		ref SampleEntity parent opposite details;
 	}
 
 	bean Address {
@@ -25,8 +31,12 @@ package org.lunifera.example.vaadin.ecview {
 		var String postalCode;
 	}
 
-	enum TheEnum {
+	enum ShortEnum {
 		OPTION_1, OPTION_2, OPTION_3
 	}
 
-} 
+	enum LongerEnum {
+		OPTION_1, OPTION_2, OPTION_3, OPTION_4, OPTION_5
+	}
+
+}
