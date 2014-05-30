@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.lunifera.example.vaadin.ecview</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>Eclipse databinding for Vaadin.</name>
+	<name>Vaadin ECView examples with Metadata-Service and DSL integration</name>
 	<parent>
 		<artifactId>org.lunifera.example.vaadin.osgi</artifactId>
 		<version>0.0.1-SNAPSHOT</version>

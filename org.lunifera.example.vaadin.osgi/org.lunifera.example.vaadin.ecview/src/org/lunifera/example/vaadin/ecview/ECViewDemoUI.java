@@ -16,7 +16,7 @@
 package org.lunifera.example.vaadin.ecview;
 
 import org.eclipse.emf.ecp.ecview.common.context.ContextException;
-import org.lunifera.example.vaadin.ecview.samples.ECViewEntityGenerator;
+import org.lunifera.example.vaadin.ecview.samples.ECViewDtoGenerator;
 import org.lunifera.runtime.web.vaadin.databinding.VaadinObservables;
 
 import com.vaadin.annotations.Theme;
@@ -48,10 +48,9 @@ public class ECViewDemoUI extends UI {
 			// tabsheet.addTab(new ECViewGridLayout(), "ECView Gridlayout");
 			// tabsheet.addTab(new ECViewTabSheet(), "ECView Tabsheet");
 			// tabsheet.addTab(new ECViewDatabinding(), "ECView Bindings");
-			tabsheet.addTab(new ECViewEntityGenerator(),
-					"ECView Entity Generator");
-			// tabsheet.addTab(new ECViewDtoGenerator(),
-			// "ECView Dto Generator");
+//			tabsheet.addTab(new ECViewEntityGenerator(),
+//					"ECView Entity Generator");
+			tabsheet.addTab(new ECViewDtoGenerator(), "ECView Dto Generator");
 		} catch (ContextException e) {
 			e.printStackTrace();
 		}

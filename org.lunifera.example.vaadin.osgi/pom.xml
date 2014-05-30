@@ -10,14 +10,24 @@
 
 	<properties>
 		<tycho-version>0.20.0</tycho-version>
-		<vaadin-version>7.1.9-SNAPSHOT</vaadin-version>
+		<vaadin-version>7.1.9</vaadin-version>
 	</properties>
 
 	<repositories>
 		<repository>
+			<id>ecview</id>
+			<url>http://lun.lunifera.org/downloads/p2/ecview/nightly/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
 			<id>lunifera</id>
 			<layout>p2</layout>
 			<url>http://lun.lunifera.org/downloads/p2/lunifera/kepler/latest/</url>
+		</repository>
+		<repository>
+			<id>xtext-releases</id>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>kepler</id>
@@ -25,6 +35,18 @@
 			<url>http://download.eclipse.org/releases/kepler</url>
 		</repository>
 	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>vaadin-snapshots</id>
+			<url>http://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<build>
 		<plugins>
@@ -45,12 +67,28 @@
 		<module>org.lunifera.example.vaadin.osgi.bootstrap.push</module>
 		<module>org.lunifera.example.vaadin.osgi.connectionpool</module>
 		<module>org.lunifera.example.vaadin.osgi.jpacontainer</module>
-		<module>org.lunifera.example.vaadin.osgi.connectionpool</module>
 		<module>org.lunifera.example.vaadin.osgi.contentprovider</module>
 		<module>org.lunifera.example.vaadin.lunifera.standalone</module>
 		<module>org.lunifera.example.vaadin.lunifera.uiprovider</module>
+		<module>org.lunifera.example.vaadin.osgi.contentprovider</module>
 		<module>org.lunifera.example.vaadin.osgi.testpart</module>
 		<module>org.lunifera.example.vaadin.osgi.testpart.tests</module>
+		<module>org.lunifera.example.vaadin.ecview</module>
 		<module>org.lunifera.example.vaadin.databinding</module>
 	</modules>
+
+	<profiles>
+		<profile>
+			<id>build.widgetset</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>clean verify</defaultGoal>
+			</build>
+			<modules>
+				<module>org.lunifera.example.vaadin.ecview</module>
+			</modules>
+		</profile>
+	</profiles>
 </project>

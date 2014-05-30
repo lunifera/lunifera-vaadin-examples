@@ -142,7 +142,7 @@ public class Activator implements BundleActivator,
 			String name = bundle.getSymbolicName();
 			if (bundle.getState() == Bundle.ACTIVE
 					&& (name.startsWith("com.vaadin") || name
-							.equals("org.lunifera.example.vaadin.databinding"))) {
+							.equals("org.lunifera.example.vaadin.ecview"))) {
 				resourceProvider.add(bundle);
 			}
 		}
@@ -154,7 +154,7 @@ public class Activator implements BundleActivator,
 		// vaadin bundle it will be added to the resource provider for lookups.
 		String name = event.getBundle().getSymbolicName();
 		if (name.startsWith("com.vaadin")
-				|| name.equals("org.lunifera.example.vaadin.databinding")) {
+				|| name.equals("org.lunifera.example.vaadin.ecview")) {
 			if (event.getType() == BundleEvent.STARTED) {
 				resourceProvider.add(event.getBundle());
 			} else if (event.getType() == BundleEvent.STOPPED) {

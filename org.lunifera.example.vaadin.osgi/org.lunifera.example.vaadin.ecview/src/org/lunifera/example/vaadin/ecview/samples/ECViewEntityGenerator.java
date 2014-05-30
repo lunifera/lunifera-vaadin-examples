@@ -5,6 +5,7 @@ import java.util.Date;
 import org.eclipse.emf.ecp.ecview.common.context.ContextException;
 import org.eclipse.emf.ecp.ecview.extension.model.extension.util.SimpleExtensionModelFactory;
 import org.lunifera.example.vaadin.ecview.Activator;
+import org.lunifera.example.vaadin.ecview.Address;
 import org.lunifera.example.vaadin.ecview.SampleEntity;
 import org.lunifera.runtime.web.ecview.services.vaadin.IECViewUIRenderService;
 
@@ -60,6 +61,11 @@ public class ECViewEntityGenerator extends CssLayout {
 		entity.setTimeAttribute(new Date());
 		entity.setDecimalAttribute(22.587d);
 		entity.setNumericAttribute(11223344);
+
+		Address address = new Address();
+		address.setStreet("Hinter den Dünen");
+		address.setPostalCode("D-112233");
+		entity.setInvoiceAddress(address);
 		return entity;
 	}
 

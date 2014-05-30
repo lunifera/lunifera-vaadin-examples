@@ -14,8 +14,16 @@ package org.lunifera.example.vaadin.ecview.dtos {
 		inherit var booleanAttribute;
 		inherit var numericAttribute;
 		inherit var decimalAttribute;
-		
+		inherit var invoiceAddress mapto AddressDto;
+		inherit var shortEnumValues;
+		inherit var longerEnumValues;
+
 		var String notInherited;
+	}
+
+	dto AddressDto wraps Address {
+		inherit var street;
+		inherit var postalCode;
 	}
 
 }
