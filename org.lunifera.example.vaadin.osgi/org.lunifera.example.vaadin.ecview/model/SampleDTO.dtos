@@ -25,5 +25,5 @@ package org.lunifera.example.vaadin.ecview.dtos {
 		inherit var street;
 		inherit var postalCode;
 	}
-
+  
 }

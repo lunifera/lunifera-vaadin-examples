@@ -7,7 +7,7 @@ package org.lunifera.example.vaadin.ecview {
 		var String number;
 		var String description;
 	}
-
+  
 	entity SampleEntity extends AbstractEntity {
 		var Date dateAttribute;
 		var Time timeAttribute;
@@ -18,10 +18,10 @@ package org.lunifera.example.vaadin.ecview {
 		var LongerEnum longerEnumValues;
 
 		ref cascade Detail [*] details opposite parent;
-
+ 
 		var Address invoiceAddress;
 	}
-
+   
 	entity Detail extends AbstractEntity {
 		ref SampleEntity parent opposite details;
 	}
@@ -38,5 +38,5 @@ package org.lunifera.example.vaadin.ecview {
 	enum LongerEnum {
 		OPTION_1, OPTION_2, OPTION_3, OPTION_4, OPTION_5
 	}
-
+ 
 }
