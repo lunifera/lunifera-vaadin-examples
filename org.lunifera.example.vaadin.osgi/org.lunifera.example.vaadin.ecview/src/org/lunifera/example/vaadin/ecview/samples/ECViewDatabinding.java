@@ -9,7 +9,7 @@ import org.eclipse.emf.ecp.ecview.common.context.ContextException;
 import org.eclipse.emf.ecp.ecview.common.model.binding.YBindingSet;
 import org.eclipse.emf.ecp.ecview.common.model.core.CoreModelFactory;
 import org.eclipse.emf.ecp.ecview.common.model.core.YBeanSlot;
-import org.eclipse.emf.ecp.ecview.common.model.core.YBeanSlotBindingEndpoint;
+import org.eclipse.emf.ecp.ecview.common.model.core.YBeanSlotValueBindingEndpoint;
 import org.eclipse.emf.ecp.ecview.common.model.core.YView;
 import org.eclipse.emf.ecp.ecview.extension.model.extension.YDateTime;
 import org.eclipse.emf.ecp.ecview.extension.model.extension.YHorizontalLayout;
@@ -121,32 +121,32 @@ public class ECViewDatabinding extends CssLayout {
 		yView.getBeanSlots().add(ySelectionSlot);
 
 		// Bind table selection to beanslot
-		YBeanSlotBindingEndpoint ySelectionSlotEndpoint = CoreModelFactory.eINSTANCE
-				.createYBeanSlotBindingEndpoint();
+		YBeanSlotValueBindingEndpoint ySelectionSlotEndpoint = CoreModelFactory.eINSTANCE
+				.createYBeanSlotValueBindingEndpoint();
 		ySelectionSlotEndpoint.setBeanSlot(ySelectionSlot);
 		ySelectionSlotEndpoint.setAttributePath("value");
 		yBindingSet.addBinding(ySelectionSlotEndpoint,
 				yTable.createSelectionEndpoint());
 
 		// Bind bean slot to nameTextField
-		YBeanSlotBindingEndpoint ySelection_NameEndpoint = CoreModelFactory.eINSTANCE
-				.createYBeanSlotBindingEndpoint();
+		YBeanSlotValueBindingEndpoint ySelection_NameEndpoint = CoreModelFactory.eINSTANCE
+				.createYBeanSlotValueBindingEndpoint();
 		ySelection_NameEndpoint.setBeanSlot(ySelectionSlot);
 		ySelection_NameEndpoint.setAttributePath("value.name");
 		yBindingSet.addBinding(yTextfield3.createValueEndpoint(),
 				ySelection_NameEndpoint);
 
 		// Bind bean slot to ageTextField
-		YBeanSlotBindingEndpoint ySelection_AgeEndpoint = CoreModelFactory.eINSTANCE
-				.createYBeanSlotBindingEndpoint();
+		YBeanSlotValueBindingEndpoint ySelection_AgeEndpoint = CoreModelFactory.eINSTANCE
+				.createYBeanSlotValueBindingEndpoint();
 		ySelection_AgeEndpoint.setBeanSlot(ySelectionSlot);
 		ySelection_AgeEndpoint.setAttributePath("value.age");
 		yBindingSet.addBinding(yNumericField.createValueEndpoint(),
 				ySelection_AgeEndpoint);
 
 		// Bind bean slot to dateField
-		YBeanSlotBindingEndpoint ySelection_DateEndpoint = CoreModelFactory.eINSTANCE
-				.createYBeanSlotBindingEndpoint();
+		YBeanSlotValueBindingEndpoint ySelection_DateEndpoint = CoreModelFactory.eINSTANCE
+				.createYBeanSlotValueBindingEndpoint();
 		ySelection_DateEndpoint.setBeanSlot(ySelectionSlot);
 		ySelection_DateEndpoint.setAttributePath("value.birthdate");
 		yBindingSet.addBinding(yDateTime.createValueEndpoint(),

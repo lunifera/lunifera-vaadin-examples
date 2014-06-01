@@ -7,7 +7,7 @@ package org.lunifera.example.vaadin.ecview.dtos {
 		inherit var number;
 		inherit var description;
 	}
-
+  
 	dto SampleDto extends AbstractDto wraps SampleEntity {
 		inherit var dateAttribute;
 		inherit var timeAttribute;
@@ -17,7 +17,7 @@ package org.lunifera.example.vaadin.ecview.dtos {
 		inherit var invoiceAddress mapto AddressDto;
 		inherit var shortEnumValues;
 		inherit var longerEnumValues;
-
+ 
 		var String notInherited;
 	}
 

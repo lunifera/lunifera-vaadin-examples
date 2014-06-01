@@ -16,7 +16,13 @@
 package org.lunifera.example.vaadin.ecview;
 
 import org.eclipse.emf.ecp.ecview.common.context.ContextException;
+import org.lunifera.example.vaadin.ecview.samples.ECViewDatabinding;
 import org.lunifera.example.vaadin.ecview.samples.ECViewDtoGenerator;
+import org.lunifera.example.vaadin.ecview.samples.ECViewEntityGenerator;
+import org.lunifera.example.vaadin.ecview.samples.ECViewGridLayout;
+import org.lunifera.example.vaadin.ecview.samples.ECViewHorizontalLayout;
+import org.lunifera.example.vaadin.ecview.samples.ECViewTabSheet;
+import org.lunifera.example.vaadin.ecview.samples.ECViewVerticalLayout;
 import org.lunifera.runtime.web.vaadin.databinding.VaadinObservables;
 
 import com.vaadin.annotations.Theme;
@@ -42,14 +48,13 @@ public class ECViewDemoUI extends UI {
 		TabSheet tabsheet = new TabSheet();
 		tabsheet.setSizeFull();
 		try {
-			// tabsheet.addTab(new ECViewVerticalLayout(), "ECView Vertical");
-			// tabsheet.addTab(new ECViewHorizontalLayout(),
-			// "ECView Horizontal");
-			// tabsheet.addTab(new ECViewGridLayout(), "ECView Gridlayout");
-			// tabsheet.addTab(new ECViewTabSheet(), "ECView Tabsheet");
-			// tabsheet.addTab(new ECViewDatabinding(), "ECView Bindings");
-//			tabsheet.addTab(new ECViewEntityGenerator(),
-//					"ECView Entity Generator");
+			tabsheet.addTab(new ECViewVerticalLayout(), "ECView Vertical");
+			tabsheet.addTab(new ECViewHorizontalLayout(), "ECView Horizontal");
+			tabsheet.addTab(new ECViewGridLayout(), "ECView Gridlayout");
+			tabsheet.addTab(new ECViewTabSheet(), "ECView Tabsheet");
+			tabsheet.addTab(new ECViewDatabinding(), "ECView Bindings");
+			tabsheet.addTab(new ECViewEntityGenerator(),
+					"ECView Entity Generator");
 			tabsheet.addTab(new ECViewDtoGenerator(), "ECView Dto Generator");
 		} catch (ContextException e) {
 			e.printStackTrace();
