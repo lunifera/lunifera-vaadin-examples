@@ -1,18 +1,16 @@
 package org.lunifera.example.vaadin.databinding.samples;
 
 import java.util.ArrayList;
-
 /**
  * Demonstrates the binding of selections between lists and the
  * master-detail binding between a table and textfields.
  * Done with standard Vaadin.
  */
-
 import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.databinding.DataBindingContext;
-import org.lunifera.runtime.web.vaadin.components.fields.NumberField;
+import org.lunifera.runtime.web.vaadin.components.fields.NumericField;
 import org.lunifera.runtime.web.vaadin.databinding.VaadinObservables;
 
 import com.vaadin.data.Container;
@@ -66,7 +64,7 @@ public class SelectionBindings extends CssLayout {
 	}
 
 	private void createLabelBoundList() {
-		// list  and label
+		// list and label
 		list3 = new ListSelect("List options bound to list caption");
 		list3.setWidth("200px");
 		list3.setPropertyDataSource(new ObjectProperty<String>("", String.class));
@@ -112,7 +110,7 @@ public class SelectionBindings extends CssLayout {
 		text1.setImmediate(true);
 		text1.setPropertyDataSource(new ObjectProperty<String>(null,
 				String.class));
-		text2 = new NumberField("Bar#number");
+		text2 = new NumericField("Bar#number");
 		text2.setNullRepresentation("");
 		text2.setImmediate(true);
 		text2.setPropertyDataSource(new ObjectProperty<Integer>(0,
@@ -180,7 +178,8 @@ public class SelectionBindings extends CssLayout {
 		dbc.bindValue(VaadinObservables.observeEnabled(list2),
 				VaadinObservables.observeValue(enabled));
 
-		// add values to lists after binding so we don't overwrite them with an empty list
+		// add values to lists after binding so we don't overwrite them with an
+		// empty list
 		Container ds1 = list1.getContainerDataSource();
 		ds1.addItem("Row 1");
 		ds1.addItem("Row 2");

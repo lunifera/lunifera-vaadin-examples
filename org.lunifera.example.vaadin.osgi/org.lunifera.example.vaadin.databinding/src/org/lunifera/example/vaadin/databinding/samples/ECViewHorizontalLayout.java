@@ -1,23 +1,14 @@
 package org.lunifera.example.vaadin.databinding.samples;
 
-import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.emf.ecp.ecview.common.context.ContextException;
-import org.eclipse.emf.ecp.ecview.common.model.core.YView;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YHorizontalLayout;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YNumericField;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YTab;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YTabSheet;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YTextField;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YVerticalLayout;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.util.SimpleExtensionModelFactory;
+import org.lunifera.ecview.core.common.context.ContextException;
+import org.lunifera.ecview.core.common.model.core.YView;
+import org.lunifera.ecview.core.extension.model.extension.YHorizontalLayout;
+import org.lunifera.ecview.core.extension.model.extension.YTextField;
+import org.lunifera.ecview.core.extension.model.extension.util.SimpleExtensionModelFactory;
 import org.lunifera.runtime.web.ecview.presentation.vaadin.VaadinRenderer;
 
 import com.vaadin.ui.AbsoluteLayout;
-import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.ListSelect;
-import com.vaadin.ui.Table;
-import com.vaadin.ui.TextField;
 
 /**
  * Demonstrates a horizontal layout done with ECView.

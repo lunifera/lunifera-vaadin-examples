@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="target" sequenceNumber="9">
+<?pde version="3.8"?><target includeMode="feature" name="org.lunifera.example.vaadin.lunifera.standalone.target" sequenceNumber="45">
 <locations>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.lunifera.dependencies.feature.atmosphere.feature.group" version="1.0.14.201401021013"/>
-<unit id="org.lunifera.dependencies.feature.vaadin.feature.group" version="7.1.8"/>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.lunifera.targetplatform.feature.runtime.source.feature.group" version="0.9.1.201506020852"/>
+<unit id="org.lunifera.targetplatform.feature.runtime.feature.group" version="0.9.1.201506020852"/>
 <repository location="http://lun.lunifera.org/downloads/p2/lunifera/luna/latest/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.equinox.sdk.feature.group" version="3.9.0.v20130828-0031"/>
-<repository location="http://download.eclipse.org/releases/kepler"/>
 </location>
 </locations>
 </target>

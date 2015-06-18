@@ -2,16 +2,14 @@ package org.lunifera.example.vaadin.databinding.samples;
 
 import java.util.Arrays;
 
-import org.eclipse.emf.ecp.ecview.common.context.ContextException;
-import org.eclipse.emf.ecp.ecview.common.model.core.YView;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YAlignment;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YDateTime;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YGridLayout;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YGridLayoutCellStyle;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YList;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YSelectionType;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YTextField;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.util.SimpleExtensionModelFactory;
+import org.lunifera.ecview.core.common.context.ContextException;
+import org.lunifera.ecview.core.common.model.core.YView;
+import org.lunifera.ecview.core.extension.model.extension.YDateTime;
+import org.lunifera.ecview.core.extension.model.extension.YGridLayout;
+import org.lunifera.ecview.core.extension.model.extension.YList;
+import org.lunifera.ecview.core.extension.model.extension.YSelectionType;
+import org.lunifera.ecview.core.extension.model.extension.YTextField;
+import org.lunifera.ecview.core.extension.model.extension.util.SimpleExtensionModelFactory;
 import org.lunifera.runtime.web.ecview.presentation.vaadin.VaadinRenderer;
 
 import com.vaadin.ui.AbsoluteLayout;
@@ -44,7 +42,6 @@ public class ECViewGridLayout extends CssLayout {
 		YView yView = factory.createView();
 		YGridLayout yLayout = factory.createGridLayout();
 		yLayout.setColumns(3);
-		yLayout.setFillVertical(false);
 		yView.setContent(yLayout);
 
 		// create textfields

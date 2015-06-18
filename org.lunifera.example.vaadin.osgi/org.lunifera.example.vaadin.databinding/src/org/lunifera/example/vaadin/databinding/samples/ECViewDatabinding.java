@@ -5,21 +5,21 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
-import org.eclipse.emf.ecp.ecview.common.context.ContextException;
-import org.eclipse.emf.ecp.ecview.common.model.binding.YBindingSet;
-import org.eclipse.emf.ecp.ecview.common.model.core.CoreModelFactory;
-import org.eclipse.emf.ecp.ecview.common.model.core.YBeanSlot;
-import org.eclipse.emf.ecp.ecview.common.model.core.YBeanSlotBindingEndpoint;
-import org.eclipse.emf.ecp.ecview.common.model.core.YView;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YDateTime;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YHorizontalLayout;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YList;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YNumericField;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YSelectionType;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YTable;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YTextField;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YVerticalLayout;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.util.SimpleExtensionModelFactory;
+import org.lunifera.ecview.core.common.context.ContextException;
+import org.lunifera.ecview.core.common.model.binding.YBindingSet;
+import org.lunifera.ecview.core.common.model.core.CoreModelFactory;
+import org.lunifera.ecview.core.common.model.core.YBeanSlot;
+import org.lunifera.ecview.core.common.model.core.YBeanSlotValueBindingEndpoint;
+import org.lunifera.ecview.core.common.model.core.YView;
+import org.lunifera.ecview.core.extension.model.extension.YDateTime;
+import org.lunifera.ecview.core.extension.model.extension.YHorizontalLayout;
+import org.lunifera.ecview.core.extension.model.extension.YList;
+import org.lunifera.ecview.core.extension.model.extension.YNumericField;
+import org.lunifera.ecview.core.extension.model.extension.YSelectionType;
+import org.lunifera.ecview.core.extension.model.extension.YTable;
+import org.lunifera.ecview.core.extension.model.extension.YTextField;
+import org.lunifera.ecview.core.extension.model.extension.YVerticalLayout;
+import org.lunifera.ecview.core.extension.model.extension.util.SimpleExtensionModelFactory;
 import org.lunifera.runtime.web.ecview.presentation.vaadin.VaadinRenderer;
 
 import com.vaadin.ui.AbsoluteLayout;
@@ -94,7 +94,6 @@ public class ECViewDatabinding extends CssLayout {
 			YBindingSet yBindingSet) {
 		// Master-Detail-Binding from table to fields
 		YVerticalLayout yLayoutGH = factory.createVerticalLayout();
-		yLayoutGH.setFillVertical(false);
 		yLayout.addElement(yLayoutGH);
 
 		YTable yTable = factory.createTable();
@@ -121,32 +120,32 @@ public class ECViewDatabinding extends CssLayout {
 		yView.getBeanSlots().add(ySelectionSlot);
 
 		// Bind table selection to beanslot
-		YBeanSlotBindingEndpoint ySelectionSlotEndpoint = CoreModelFactory.eINSTANCE
-				.createYBeanSlotBindingEndpoint();
+		YBeanSlotValueBindingEndpoint ySelectionSlotEndpoint = CoreModelFactory.eINSTANCE
+				.createYBeanSlotValueBindingEndpoint();
 		ySelectionSlotEndpoint.setBeanSlot(ySelectionSlot);
 		ySelectionSlotEndpoint.setAttributePath("value");
 		yBindingSet.addBinding(ySelectionSlotEndpoint,
 				yTable.createSelectionEndpoint());
 
 		// Bind bean slot to nameTextField
-		YBeanSlotBindingEndpoint ySelection_NameEndpoint = CoreModelFactory.eINSTANCE
-				.createYBeanSlotBindingEndpoint();
+		YBeanSlotValueBindingEndpoint ySelection_NameEndpoint = CoreModelFactory.eINSTANCE
+				.createYBeanSlotValueBindingEndpoint();
 		ySelection_NameEndpoint.setBeanSlot(ySelectionSlot);
 		ySelection_NameEndpoint.setAttributePath("value.name");
 		yBindingSet.addBinding(yTextfield3.createValueEndpoint(),
 				ySelection_NameEndpoint);
 
 		// Bind bean slot to ageTextField
-		YBeanSlotBindingEndpoint ySelection_AgeEndpoint = CoreModelFactory.eINSTANCE
-				.createYBeanSlotBindingEndpoint();
+		YBeanSlotValueBindingEndpoint ySelection_AgeEndpoint = CoreModelFactory.eINSTANCE
+				.createYBeanSlotValueBindingEndpoint();
 		ySelection_AgeEndpoint.setBeanSlot(ySelectionSlot);
 		ySelection_AgeEndpoint.setAttributePath("value.age");
 		yBindingSet.addBinding(yNumericField.createValueEndpoint(),
 				ySelection_AgeEndpoint);
 
 		// Bind bean slot to dateField
-		YBeanSlotBindingEndpoint ySelection_DateEndpoint = CoreModelFactory.eINSTANCE
-				.createYBeanSlotBindingEndpoint();
+		YBeanSlotValueBindingEndpoint ySelection_DateEndpoint = CoreModelFactory.eINSTANCE
+				.createYBeanSlotValueBindingEndpoint();
 		ySelection_DateEndpoint.setBeanSlot(ySelectionSlot);
 		ySelection_DateEndpoint.setAttributePath("value.birthdate");
 		yBindingSet.addBinding(yDateTime.createValueEndpoint(),
@@ -158,7 +157,6 @@ public class ECViewDatabinding extends CssLayout {
 			YBindingSet yBindingSet) {
 		// Lists
 		YVerticalLayout yLayoutEF = factory.createVerticalLayout();
-		yLayoutEF.setFillVertical(false);
 		yLayout.addElement(yLayoutEF);
 
 		// list 1
@@ -186,7 +184,6 @@ public class ECViewDatabinding extends CssLayout {
 			YBindingSet yBindingSet) {
 		// Datefields
 		YVerticalLayout yLayoutCD = factory.createVerticalLayout();
-		yLayoutCD.setFillVertical(false);
 		yLayout.addElement(yLayoutCD);
 
 		YDateTime yDatefield1 = factory.createDateTime();
@@ -205,7 +202,6 @@ public class ECViewDatabinding extends CssLayout {
 			YBindingSet yBindingSet) {
 		// Textfields
 		YVerticalLayout yLayoutAB = factory.createVerticalLayout();
-		yLayoutAB.setFillVertical(false);
 		yLayout.addElement(yLayoutAB);
 
 		YTextField yTextfield1 = factory.createTextField();

@@ -1,18 +1,17 @@
 package org.lunifera.example.vaadin.databinding.samples;
 
-import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.emf.ecp.ecview.common.context.ContextException;
-import org.eclipse.emf.ecp.ecview.common.model.core.YView;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YButton;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YDateTime;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YLabel;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YNumericField;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YTab;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YTabSheet;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YTextField;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.YVerticalLayout;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.listener.YButtonClickListener;
-import org.eclipse.emf.ecp.ecview.extension.model.extension.util.SimpleExtensionModelFactory;
+import org.lunifera.ecview.core.common.context.ContextException;
+import org.lunifera.ecview.core.common.model.core.YView;
+import org.lunifera.ecview.core.extension.model.extension.YButton;
+import org.lunifera.ecview.core.extension.model.extension.YDateTime;
+import org.lunifera.ecview.core.extension.model.extension.YLabel;
+import org.lunifera.ecview.core.extension.model.extension.YNumericField;
+import org.lunifera.ecview.core.extension.model.extension.YTab;
+import org.lunifera.ecview.core.extension.model.extension.YTabSheet;
+import org.lunifera.ecview.core.extension.model.extension.YTextField;
+import org.lunifera.ecview.core.extension.model.extension.YVerticalLayout;
+import org.lunifera.ecview.core.extension.model.extension.listener.YButtonClickListener;
+import org.lunifera.ecview.core.extension.model.extension.util.SimpleExtensionModelFactory;
 import org.lunifera.runtime.web.ecview.presentation.vaadin.VaadinRenderer;
 
 import com.vaadin.ui.AbsoluteLayout;
@@ -66,7 +65,6 @@ public class ECViewTabSheet extends CssLayout {
 
 		// tab 3 content
 		YVerticalLayout yTab3Content = factory.createVerticalLayout();
-		yTab3Content.setFillVertical(false);
 		yTab3.setEmbeddable(yTab3Content);
 		yTab3Content.addElement(factory.createBrowser());
 
@@ -93,7 +91,6 @@ public class ECViewTabSheet extends CssLayout {
 
 		// tab 2 content
 		YVerticalLayout yTab2Content = factory.createVerticalLayout();
-		yTab2Content.setFillVertical(false);
 		yTab2.setEmbeddable(yTab2Content);
 		YTextField yTextfield5 = factory.createTextField();
 		yTextfield5.setLabel("Name");
@@ -114,7 +111,6 @@ public class ECViewTabSheet extends CssLayout {
 
 		// tab 1 content
 		YVerticalLayout yTab1Content = factory.createVerticalLayout();
-		yTab1Content.setFillVertical(false);
 		yTab1.setEmbeddable(yTab1Content);
 		YTextField yTextfield1 = factory.createTextField();
 		yTextfield1.setLabel("Name");

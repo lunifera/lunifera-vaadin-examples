@@ -75,6 +75,7 @@
 		<module>org.lunifera.example.vaadin.osgi.testpart.tests</module>
 		<module>org.lunifera.example.vaadin.ecview</module>
 		<module>org.lunifera.example.vaadin.databinding</module>
+		<module>org.lunifera.example.vaadin.osgi.bundleresource</module>
 	</modules>
 
 	<profiles>

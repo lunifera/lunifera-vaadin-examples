@@ -15,7 +15,7 @@
  */
 package org.lunifera.example.vaadin.databinding;
 
-import org.eclipse.emf.ecp.ecview.common.context.ContextException;
+import org.lunifera.ecview.core.common.context.ContextException;
 import org.lunifera.example.vaadin.databinding.samples.ECViewDatabinding;
 import org.lunifera.example.vaadin.databinding.samples.ECViewGridLayout;
 import org.lunifera.example.vaadin.databinding.samples.ECViewHorizontalLayout;

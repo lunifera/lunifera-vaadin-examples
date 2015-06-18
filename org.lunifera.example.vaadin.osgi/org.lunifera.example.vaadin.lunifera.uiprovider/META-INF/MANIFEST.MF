@@ -7,8 +7,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.osgi.framework;version="1.7.0",
  org.osgi.service.component;version="1.2.0"
-Require-Bundle: com.vaadin.shared;bundle-version="7.1.1",
- com.vaadin.server;bundle-version="7.1.1",
+Require-Bundle: com.vaadin.shared;bundle-version="7.3.8",
+ com.vaadin.server;bundle-version="7.3.8",
  org.lunifera.runtime.web.vaadin.osgi;bundle-version="0.0.1"
 Service-Component: OSGI-INF/*.xml
 Bundle-Vendor: lunifera.org

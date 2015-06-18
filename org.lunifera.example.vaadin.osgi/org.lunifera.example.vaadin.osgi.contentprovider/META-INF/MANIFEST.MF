@@ -7,6 +7,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.json,
  org.lunifera.example.vaadin.osgi.bootstrap.extendable.api
-Require-Bundle: com.vaadin.shared;bundle-version="7.1.1",
- com.vaadin.server;bundle-version="7.1.1"
+Require-Bundle: com.vaadin.shared;bundle-version="7.3.8",
+ com.vaadin.server;bundle-version="7.3.8"
 Service-Component: OSGI-INF/*.xml

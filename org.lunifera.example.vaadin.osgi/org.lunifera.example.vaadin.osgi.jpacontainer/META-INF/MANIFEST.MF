@@ -15,9 +15,8 @@ Import-Package: javax.persistence;jpa="2.1";version="2.1.0",
  org.osgi.framework;version="1.4.0",
  org.osgi.service.jpa,
  org.osgi.util.tracker
-Require-Bundle: com.vaadin.server;bundle-version="7.1.1",
- com.vaadin.shared;bundle-version="7.1.1",
- com.vaadin.shared.deps;bundle-version="1.0.2",
+Require-Bundle: com.vaadin.server;bundle-version="7.3.8",
+ com.vaadin.shared;bundle-version="7.3.8",
  org.lunifera.dependencies.bundle.vaadin.addon.jpacontainer;bundle-version="3.0.0"
 Meta-Persistence: META-INF/persistence.xml
 Service-Component: OSGI-INF/containerService.xml,

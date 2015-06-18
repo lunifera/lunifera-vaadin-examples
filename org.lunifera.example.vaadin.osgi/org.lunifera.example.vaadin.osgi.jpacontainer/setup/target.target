@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target includeMode="feature" name="org.lunifera.example.vaadin.lunifera.standalone.target" sequenceNumber="46">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.lunifera.targetplatform.feature.runtime.source.feature.group" version="0.9.1.201506020852"/>
+<unit id="org.lunifera.targetplatform.feature.runtime.feature.group" version="0.9.1.201506020852"/>
+<repository location="http://lun.lunifera.org/downloads/p2/lunifera/luna/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.lunifera.dependencies.feature.vaadin.addon.jpacontainer.feature.group" version="3.0.0.201505201641"/>
+<repository location="http://lun.lunifera.org/downloads/p2/lunifera/luna/latest/"/>
+</location>
+</locations>
+</target>
