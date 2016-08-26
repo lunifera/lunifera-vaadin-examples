@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target includeMode="feature" name="org.lunifera.example.vaadin.lunifera.standalone.target" sequenceNumber="45">
+<?pde version="3.8"?><target includeMode="feature" name="org.lunifera.example.vaadin.lunifera.standalone.target" sequenceNumber="50">
 <locations>
+<location path="${project_loc}/setup/lib" type="Directory"/>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.lunifera.targetplatform.feature.runtime.source.feature.group" version="0.9.1.201506020852"/>
-<unit id="org.lunifera.targetplatform.feature.runtime.feature.group" version="0.9.1.201506020852"/>
-<repository location="http://lun.lunifera.org/downloads/p2/lunifera/luna/latest/"/>
+<unit id="org.eclipse.osbp.softwarefactory.target.feature.feature.group" version="0.9.0.201606271829"/>
+<repository location="http://cx/downloads/p2/compex/luna/latest/"/>
 </location>
+<location path="${eclipse_home}" type="Profile"/>
 </locations>
 </target>

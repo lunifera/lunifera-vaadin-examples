@@ -1,4 +1,4 @@
- /**
+/**
  * Copyright 2013 Lunifera GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,10 @@
 package org.lunifera.example.vaadin.osgi.bootstrap.push;
 
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.server.DeploymentConfiguration;
+import com.vaadin.server.ServiceException;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.server.VaadinServletService;
 
 /**
  * An implementation of VaadinServlet that uses SimpleUI as its base UI.
@@ -24,5 +27,14 @@ import com.vaadin.server.VaadinServlet;
 @SuppressWarnings("serial")
 @VaadinServletConfiguration(ui = SimplePushUI.class, productionMode = false)
 public class SimpleVaadinServlet extends VaadinServlet {
-
+	@Override
+	protected VaadinServletService createServletService(
+			DeploymentConfiguration deploymentConfiguration)
+			throws ServiceException {
+		// see http://dev.vaadin.com/ticket/15516
+		ServletService service = new ServletService(this,
+				deploymentConfiguration);
+		service.init();
+		return service;
+	}
 }
